@@ -15,4 +15,6 @@ Open index.html directly in a browser, or serve this folder with a local HTTP se
 All personal content, images, icons, external fonts, social links, maps, and PDF generation dependencies have been omitted. Contact information and message submission are intentionally absent from this blank starter.
 
 ## GitHub Pages
+Live website: [https://phantrongnguyen.github.io/profile/](https://phantrongnguyen.github.io/profile/).
+
 Push the contents to your own repository, then configure Settings > Pages > Deploy from a branch and select the publishing branch with /(root).
