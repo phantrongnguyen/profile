@@ -110,16 +110,17 @@
   letter-spacing: 0.02em;
   color: var(--text-dim);
   padding: var(--s-2) var(--s-3);
-  border-radius: var(--r-sm);
-  border: 1px solid transparent;
-  transition: var(--t-fast);
+  border-radius: 0;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  transition: color var(--t-fast), border-color var(--t-fast);
 }
 .tab-btn::before { content: ""; color: var(--accent); margin-right: 0; }
-.tab-btn:hover { color: var(--text); background: var(--surface); }
+.tab-btn:hover { color: var(--text); border-bottom-color: var(--line-strong); }
 .tab-btn.active {
   color: var(--accent);
-  background: var(--accent-soft);
-  border-color: var(--accent-line);
+  border-bottom-color: var(--accent);
 }
 
 /* ---- Generic card ----------------------------------------- */
