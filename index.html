@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A customizable profile website template.">
+  <meta name="theme-color" content="#08090b">
+  <title>Profile Template</title>
+  <link rel="stylesheet" href="css/colors.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/template.css">
+  <script src="data/content.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <div class="bg" aria-hidden="true"><div class="bg-grid"></div><div class="bg-glow"></div></div>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="console">
+        <div class="console-bar"><span class="console-path">profile: ~</span></div>
+        <div class="console-body">
+          <div class="profile-id"><h1 class="name" id="profile-name"></h1><p class="title" id="profile-title"></p></div>
+          <div class="console-section"><span class="console-key">// introduction</span><p id="profile-summary"></p></div>
+          <p class="template-note">Customize this template in data/content.js.</p>
+        </div>
+      </div>
+    </aside>
+    <main class="main-content">
+      <nav class="navbar" aria-label="Profile sections"><div class="tab-navigation" role="tablist" aria-label="Sections"></div></nav>
+      <div class="content-area">
+        <header class="hero"><div class="hero-term"><span class="term-prompt">$</span><span class="term-cmd">welcome</span></div><h2 class="hero-headline" id="headline"></h2><p class="hero-sub" id="subtitle"></p></header>
+        <div id="sections"></div>
+        <noscript>Please enable JavaScript to display the template content.</noscript>
+      </div>
+      <footer class="footer">Profile website template</footer>
+    </main>
+  </div>
+</body>
+</html>
