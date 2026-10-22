@@ -4,7 +4,21 @@
   const setText = (id, value) => { document.getElementById(id).textContent = value; };
   setText('profile-name', content.name);
   setText('profile-title', content.title);
+  ['email', 'location', 'phone'].forEach(field => {
+    setText(`contact-${field}`, content.contact?.[field] || '');
+  });
   setText('profile-summary', content.summary);
+  ['facebook', 'github', 'linkedin'].forEach(network => {
+    const link = document.getElementById(`link-${network}`);
+    const url = content.links?.[network];
+    if (url && /^https?:\/\//i.test(url)) {
+      link.href = url;
+    } else {
+      link.removeAttribute('href');
+      link.setAttribute('aria-disabled', 'true');
+      link.title = `${link.getAttribute('aria-label')}: chưa cập nhật liên kết`;
+    }
+  });
   setText('headline', content.headline);
   setText('subtitle', content.subtitle);
   const navigation = document.querySelector('.tab-navigation');

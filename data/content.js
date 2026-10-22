@@ -1,6 +1,16 @@
 window.PROFILE_CONTENT = {
-  name: "Your Name",
-  title: "Your Professional Title",
+  name: "Phan Trọng Nguyên",
+  title: "Data Engineer",
+  links: {
+    facebook: "",
+    github: "https://github.com/phantrongnguyen",
+    linkedin: "https://www.linkedin.com/in/phan-tr%E1%BB%8Dng-nguy%C3%AAn-a966ab327/"
+  },
+  contact: {
+    email: "pn629503@gmail.com",
+    location: "Ho Chi Minh City, Vietnam",
+    phone: "0373649633"
+  },
   summary: "Add a short introduction about yourself here.",
   headline: "Your next chapter starts here.",
   subtitle: "Describe your focus, interests, and what you want to create.",
