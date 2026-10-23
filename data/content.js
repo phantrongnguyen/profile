@@ -2,7 +2,7 @@ window.PROFILE_CONTENT = {
   name: "Phan Trọng Nguyên",
   title: "Data Engineer",
   links: {
-    facebook: "",
+    facebook: "https://www.facebook.com/nguyen.phan.892024/",
     github: "https://github.com/phantrongnguyen",
     linkedin: "https://www.linkedin.com/in/phan-tr%E1%BB%8Dng-nguy%C3%AAn-a966ab327/"
   },
