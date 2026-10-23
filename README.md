@@ -6,6 +6,8 @@ A text-only HTML, CSS, and JavaScript starter derived from the original portfoli
 Open index.html directly in a browser, or serve this folder with a local HTTP server. No dependencies or build step are required.
 
 ## Customize
+- Separate pages in pages/: about.html, resume.html, portfolio.html, interests.html, and honors.html. index.html also displays About as the homepage.
+- Each page shares CSS, data/content.js, and js/main.js; its body data-page attribute selects the section to display.
 - data/content.js: placeholder profile text, sections, and cards.
 - css/colors.css: design tokens.
 - css/template.css: starter-specific layout overrides.

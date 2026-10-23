@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A customizable profile website template.">
+  <meta name="theme-color" content="#08090b">
+  <title>Interests | Phan Trong Nguyen - Data Engineer</title>
+  <link rel="icon" type="image/png" href="../assets/images/letter-n.png">
+  <link rel="stylesheet" href="../css/colors.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/template.css">
+  <script src="../data/content.js" defer></script>
+  <script src="../js/main.js" defer></script>
+</head>
+<body data-page="interests">
+  <div class="bg" aria-hidden="true"><div class="bg-grid"></div><div class="bg-glow"></div></div>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="console">
+        <div class="console-bar"><img class="console-icon" src="../assets/images/letter-n.png" alt="" width="24" height="24"><span class="console-path">nguyen: ~</span></div>
+        <div class="console-body">
+          <img class="profile-avatar" src="../assets/images/nguyen.png" alt="Avatar of Nguyen" width="160" height="160">
+          <div class="profile-id"><h1 class="name" id="profile-name"></h1><p class="title" id="profile-title"></p></div>
+          <div class="console-section"><span class="console-key">// introduction</span><p id="profile-summary"></p></div>
+          <div class="console-section">
+            <span class="console-key">// contact</span>
+            <ul class="contact-info" aria-label="Contact information">
+              <li class="info-item"><img class="contact-icon" src="../assets/images/email.png" alt="" width="24" height="24"><div><span class="contact-label">Email</span><span id="contact-email"></span></div></li>
+              <li class="info-item"><img class="contact-icon" src="../assets/images/location.png" alt="" width="24" height="24"><div><span class="contact-label">Location</span><span id="contact-location"></span></div></li>
+              <li class="info-item"><img class="contact-icon" src="../assets/images/old-typical-phone.png" alt="" width="24" height="24"><div><span class="contact-label">Phone</span><span id="contact-phone"></span></div></li>
+            </ul>
+          </div>
+          <div class="console-section">
+            <span class="console-key">// links</span>
+            <div class="social-links" aria-label="Social links">
+              <a class="social-icon profile-social-link" id="link-facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><img src="../assets/images/facebook-logo.png" alt="" width="24" height="24"></a>
+              <a class="social-icon profile-social-link" id="link-github" aria-label="GitHub" href="https://github.com/phantrongnguyen" target="_blank" rel="noopener noreferrer"><img src="../assets/images/github.png" alt="" width="24" height="24"></a>
+              <a class="social-icon profile-social-link" id="link-linkedin" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><img src="../assets/images/linkedin.png" alt="" width="24" height="24"></a>
+            </div>
+          </div>
+          <p class="template-note"></p>
+        </div>
+      </div>
+    </aside>
+    <main class="main-content">
+      <nav class="navbar" aria-label="Profile sections"><div class="tab-navigation">
+        <a class="tab-btn" data-page="about" href="about.html">About</a>
+        <a class="tab-btn" data-page="resume" href="resume.html">Resume</a>
+        <a class="tab-btn" data-page="portfolio" href="portfolio.html">Portfolio</a>
+        <a class="tab-btn" data-page="interests" href="interests.html">Interests</a>
+        <a class="tab-btn" data-page="honors" href="honors.html">Honors</a>
+      </div></nav>
+      <div class="content-area">
+        <header class="hero"><div class="hero-term"><span class="term-prompt">$</span><span class="term-cmd">welcome</span></div><h2 class="hero-headline" id="headline"></h2><p class="hero-sub" id="subtitle"></p></header>
+        <div id="sections"></div>
+        <noscript>Please enable JavaScript to display the template content.</noscript>
+      </div>
+      <footer class="footer">Profile website template</footer>
+    </main>
+  </div>
+</body>
+</html>

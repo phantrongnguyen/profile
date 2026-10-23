@@ -15,7 +15,7 @@
   <script src="data/content.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
-<body>
+<body data-page="about">
   <div class="bg" aria-hidden="true"><div class="bg-grid"></div><div class="bg-glow"></div></div>
   <div class="app">
     <aside class="sidebar">
@@ -46,7 +46,13 @@
       </div>
     </aside>
     <main class="main-content">
-      <nav class="navbar" aria-label="Profile sections"><div class="tab-navigation" role="tablist" aria-label="Sections"></div></nav>
+      <nav class="navbar" aria-label="Profile sections"><div class="tab-navigation">
+        <a class="tab-btn" data-page="about" href="pages/about.html">About</a>
+        <a class="tab-btn" data-page="resume" href="pages/resume.html">Resume</a>
+        <a class="tab-btn" data-page="portfolio" href="pages/portfolio.html">Portfolio</a>
+        <a class="tab-btn" data-page="interests" href="pages/interests.html">Interests</a>
+        <a class="tab-btn" data-page="honors" href="pages/honors.html">Honors</a>
+      </div></nav>
       <div class="content-area">
         <header class="hero"><div class="hero-term"><span class="term-prompt">$</span><span class="term-cmd">welcome</span></div><h2 class="hero-headline" id="headline"></h2><p class="hero-sub" id="subtitle"></p></header>
         <div id="sections"></div>
