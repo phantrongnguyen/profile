@@ -30,6 +30,96 @@
 .service-card p, #profile-summary { color: var(--text-dim); }
 .services-grid { margin-top: 24px; }
 .hero-headline { overflow-wrap: anywhere; }
+
+/* White neon: soft edges, crisp text, brighter interactive states. */
+.bg-glow {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.075), transparent 65%);
+}
+.console,
+.service-card,
+.interest-card,
+.portfolio-item,
+.timeline-content,
+.hero-term {
+  border-color: var(--neon-line);
+  box-shadow: var(--neon-glow);
+}
+.console-bar {
+  border-bottom-color: var(--neon-line);
+  background: linear-gradient(110deg, rgba(255, 255, 255, 0.065), transparent), var(--surface-2);
+}
+.navbar {
+  border-bottom-color: var(--neon-line);
+  box-shadow: 0 3px 18px rgba(255, 255, 255, 0.045);
+}
+.hero,
+.footer,
+.sidebar { border-color: rgba(255, 255, 255, 0.18); }
+.name,
+.hero-headline,
+.section-title {
+  color: var(--neon-white);
+  text-shadow: 0 0 16px rgba(255, 255, 255, 0.19);
+}
+.console-path,
+.profile-id .title,
+.term-prompt,
+.tab-btn.active {
+  color: var(--neon-white);
+  text-shadow: 0 0 9px rgba(255, 255, 255, 0.36);
+}
+.console-key,
+.contact-label { color: #aeb4bf; }
+.profile-avatar {
+  border-color: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.035), var(--neon-glow);
+}
+.console-icon,
+.contact-icon,
+.profile-social-link img { filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.24)); }
+.social-icon {
+  border-color: var(--neon-line);
+  box-shadow: var(--neon-glow);
+}
+.social-icon:focus-visible,
+.social-icon[href]:hover,
+.service-card:hover,
+.interest-card:hover,
+.portfolio-item:hover {
+  border-color: rgba(255, 255, 255, 0.65);
+  box-shadow: var(--neon-glow-hover);
+}
+.profile-social-link[href]:hover,
+.profile-social-link[href]:focus-visible { background: var(--surface-2); }
+.tab-btn.active { border-bottom-color: var(--neon-white); }
+.tab-btn.active::after { box-shadow: 0 0 8px rgba(255, 255, 255, 0.65); }
+.info-item:hover { background: rgba(255, 255, 255, 0.055); }
+:focus-visible { outline-color: var(--neon-white); }
+@media (prefers-reduced-motion: no-preference) {
+  .profile-avatar {
+    animation: avatar-float 5s ease-in-out infinite, avatar-neon 4s ease-in-out infinite;
+    transition: scale var(--t-base), border-color var(--t-base);
+  }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .profile-avatar:hover {
+    scale: 1.045;
+    border-color: var(--neon-white);
+    animation-play-state: paused;
+  }
+}
+@keyframes avatar-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes avatar-neon {
+  0%, 100% {
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.035), 0 0 14px rgba(255, 255, 255, 0.10);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.055), 0 0 24px rgba(255, 255, 255, 0.23), 0 0 42px rgba(255, 255, 255, 0.08);
+  }
+}
 @media (max-width: 900px) {
   .app { display: block; }
   .sidebar { display: block; position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
