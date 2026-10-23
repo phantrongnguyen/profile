@@ -4,6 +4,7 @@
 .content-area { padding: clamp(20px, 5vw, 64px); flex: 1; }
 .tab-navigation { display: flex; overflow-x: auto; padding: 12px 20px; gap: 8px; }
 .tab-btn { flex-shrink: 0; }
+.profile-id { text-align: center; }
 .profile-social-link img { width: 24px; height: 24px; object-fit: contain; }
 .profile-social-link[aria-disabled="true"] { opacity: 0.5; cursor: default; }
 .profile-social-link[aria-disabled="true"]:hover { background: var(--ground-2); border-color: var(--line); transform: none; }
