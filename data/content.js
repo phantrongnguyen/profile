@@ -11,7 +11,7 @@ window.PROFILE_CONTENT = {
     location: "Ho Chi Minh City, Vietnam",
     phone: "0373649633"
   },
-  summary: "Add a short introduction about yourself here.",
+  summary: "",
   headline: "Your next chapter starts here.",
   subtitle: "Describe your focus, interests, and what you want to create.",
   sections: [

@@ -7,7 +7,8 @@
   ['email', 'location', 'phone'].forEach(field => {
     setText(`contact-${field}`, content.contact?.[field] || '');
   });
-  setText('profile-summary', content.summary);
+  setText('profile-summary', content.summary || '');
+  document.getElementById('profile-summary').closest('.console-section').hidden = !content.summary?.trim();
   ['facebook', 'github', 'linkedin'].forEach(network => {
     const link = document.getElementById(`link-${network}`);
     const url = content.links?.[network];
