@@ -1,0 +1,46 @@
+/* Rainy lake layers stay behind content and never intercept page interaction. */
+body.rain-lake-enabled { isolation: isolate; }
+.rain-lake-canvas { display: block; width: 100%; height: 100%; }
+.rain-lake-enabled .bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(6,10,18,.30), transparent 45%, rgba(6,10,18,.35));
+}
+.rain-lake-enabled .console,
+.rain-lake-enabled .service-card { background-color: rgba(19,21,27,.86); }
+.rain-lake-enabled .tab-navigation { padding-right: 80px; }
+.rain-weather { position: fixed; right: max(18px, env(safe-area-inset-right)); top: max(12px, env(safe-area-inset-top)); z-index: 50; font-size: 13px; }
+.rain-weather-button,
+.rain-weather-panel {
+  color: var(--text); background: rgba(13,22,38,.94);
+  border: 1px solid var(--neon-line); border-radius: 14px;
+  box-shadow: 0 12px 36px rgba(0,0,0,.4); backdrop-filter: blur(16px);
+}
+.rain-weather-button { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border-radius: 50%; font-size: 22px; line-height: 1; }
+.rain-weather-button:hover { background: var(--surface-2); }
+.rain-weather-panel {
+  position: fixed; inset: max(68px, calc(env(safe-area-inset-top) + 56px)) max(18px, env(safe-area-inset-right)) auto auto;
+  width: min(360px, calc(100vw - 36px)); max-height: calc(100dvh - 86px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  overflow-y: auto; overscroll-behavior: contain; padding: 22px; margin: 0;
+}
+.rain-weather-panel header { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.rain-weather-panel h2 { font-size: 17px; }
+.rain-weather-panel [data-close] { width: 44px; min-height: 44px; border-radius: 8px; }
+.rain-weather-hint { color: var(--text-dim); font-size: 12px; margin: 10px 0 20px; }
+.rain-weather-panel fieldset { border: 0; padding: 0; margin: 18px 0; min-width: 0; }
+.rain-weather-panel legend { margin-bottom: 8px; color: var(--text-dim); }
+.rain-weather-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.rain-weather-themes { grid-template-columns: repeat(2, 1fr); }
+.rain-weather-options button,
+.rain-weather-pause { padding: 9px 6px; min-height: 44px; border: 1px solid var(--line-strong); border-radius: 8px; background: rgba(255,255,255,.04); font-size: 12px; }
+.rain-weather-options button:hover,
+.rain-weather-panel [data-close]:hover { background: rgba(255,255,255,.1); }
+.rain-weather-options [aria-pressed="true"] { border-color: #a5dfff; background: rgba(56,189,248,.14); color: #d5efff; }
+.rain-weather-panel label { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 12px; }
+.rain-weather-panel output { color: #a5dfff; }
+.rain-weather-panel input[type="range"] { display: block; width: 100%; min-height: 32px; accent-color: #a5dfff; }
+.rain-weather-toggle { min-height: 36px; }
+.rain-weather-panel input[type="checkbox"] { width: 18px; height: 18px; accent-color: #a5dfff; flex-shrink: 0; }
+.rain-weather-pause { width: 100%; margin-top: 18px; }
+@media (max-width: 480px) {
+  .rain-weather-panel { padding: 16px; }
+}

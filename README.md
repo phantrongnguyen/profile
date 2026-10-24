@@ -20,3 +20,10 @@ All personal content, images, icons, external fonts, social links, maps, and PDF
 Live website: [https://phantrongnguyen.github.io/profile/](https://phantrongnguyen.github.io/profile/).
 
 Push the contents to your own repository, then configure Settings > Pages > Deploy from a branch and select the publishing branch with /(root).
+
+## Rainy lake background
+- `js/rainy-lake.js` adapts the Canvas rain, ripple, and atmosphere simulation from `docs/interactive_rainy_lake_background.html` for the homepage and all five profile pages.
+- `css/rainy-lake.css` styles the background and the Weather panel without external dependencies.
+- Use the circular umbrella icon in the top-right corner to adjust presets, colors, rain, wind, fog, and the horizon, or pause the animation. Lightning is off by default.
+- Drag over noninteractive page space below the horizon to create ripples. Links, controls, and normal page scrolling remain available.
+- Reduced-motion preference starts the scene paused and disables lightning; animation also stops while the tab is hidden.
