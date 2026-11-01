@@ -1,7 +1,9 @@
 /* Adapt the original console layout to a text-only starter. */
-:root { --font-sans: system-ui, sans-serif; --font-mono: ui-monospace, Consolas, monospace; }
+:root { --font-sans: var(--font-mono); }
 [hidden] { display: none !important; }
 .content-area { padding: clamp(20px, 5vw, 64px); flex: 1; }
+body[data-page="about"] .content-area { padding-top: 24px; }
+body[data-page="about"] .hero { padding-top: 0; }
 .tab-navigation { display: flex; overflow-x: auto; padding: 12px 20px; gap: 8px; }
 .tab-btn { flex-shrink: 0; }
 .profile-id { text-align: center; }
@@ -29,6 +31,24 @@
 .service-card { display: block; }
 .service-card h3 { margin-bottom: 12px; }
 .service-card p, #profile-summary { color: var(--text-dim); }
+#about .service-card p { white-space: pre-line; }
+body[data-page="about"] .hero-headline { font-size: clamp(1.75rem, 1.1rem + 2vw, 2.75rem); white-space: pre-line; max-width: 18ch; }
+body[data-page="about"] .hero-sub { line-height: 1.8; }
+#about .about-text { white-space: pre-line; color: var(--text-dim); font-size: 1.0625rem; line-height: 1.85; max-width: 78ch; }
+#about .section-title { font-size: clamp(1.35rem, 1rem + 1vw, 1.75rem); white-space: normal; }
+#about .section-index { color: #000000; filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 6px rgba(255, 255, 255, 0.75)); }
+#about .section-head { margin-bottom: 35px; }
+.about-services-label { margin-top: 36px; font-family: var(--font-mono); font-size: var(--fs-mono); font-weight: 400; letter-spacing: var(--tracking-mono); color: #aeb4bf; text-transform: lowercase; }
+#about .services-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 18px; }
+#about .service-card { position: relative; padding: 26px; min-width: 0; }
+#about .service-card h3 { font-size: var(--fs-md); }
+#about .service-card p { font-size: var(--fs-sm); line-height: 1.8; }
+.about-card-symbol { display: grid; place-items: center; width: 40px; height: 40px; margin-bottom: 20px; border: 1px solid var(--neon-line); border-radius: var(--r-md); background: rgba(255,255,255,.04); font-family: var(--font-mono); font-size: var(--fs-mono); color: var(--neon-white); }
+@media (max-width: 560px) {
+  #about .services-grid { grid-template-columns: minmax(0, 1fr); }
+  #about .service-card { padding: 22px; }
+  body[data-page="about"] .hero-headline { font-size: clamp(1.5rem, 5.5vw, 2rem); }
+}
 .services-grid { margin-top: 24px; }
 .hero-headline { overflow-wrap: anywhere; }
 
