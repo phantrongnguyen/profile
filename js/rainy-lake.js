@@ -19,8 +19,8 @@
   <fieldset><legend>Presets</legend><div class="rain-weather-options">
     <button type="button" data-preset="drizzle">Drizzle</button><button type="button" data-preset="storm">Storm</button><button type="button" data-preset="calm">Gentle</button>
   </div></fieldset>
-  <label for="rainIntensity">Rain intensity <output id="rainVal" for="rainIntensity">120</output></label>
-  <input type="range" id="rainIntensity" min="0" max="300" value="120">
+  <label for="rainIntensity">Rain intensity <output id="rainVal" for="rainIntensity">9</output></label>
+  <input type="range" id="rainIntensity" min="0" max="300" value="9">
   <label for="rippleFrequency">Ripple chance <output id="rippleVal" for="rippleFrequency">70%</output></label>
   <input type="range" id="rippleFrequency" min="10" max="100" value="70">
   <label for="windAngle">Wind <output id="windVal" for="windAngle">-12</output></label>
@@ -49,7 +49,7 @@
     const pendingRipples = [];
     const raindrops = [];
     const ripples = [];
-    const config = { rainCount: 120, rippleChance: 0.7, wind: -12,
+    const config = { rainCount: 3, rippleChance: 0.7, wind: -12,
         enableLightning: false, enableHorizon: true, enableFog: true, theme: 'monochrome' };
     const background = document.createElement('canvas');
     const backgroundCtx = background.getContext('2d');
