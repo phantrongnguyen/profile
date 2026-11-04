@@ -25,6 +25,11 @@
   const sections = document.getElementById('sections');
   const pageId = document.body.dataset.page || 'about';
   const section = content.sections.find(item => item.id === pageId);
+  if (section) {
+    setText('headline', section.headline ?? content.headline);
+    setText('subtitle', section.subtitle ?? content.subtitle);
+    document.getElementById('subtitle').hidden = !document.getElementById('subtitle').textContent.trim();
+  }
   document.querySelectorAll('.tab-navigation a').forEach(link => {
     const active = link.dataset.page === pageId;
     link.classList.toggle('active', active);
@@ -32,6 +37,10 @@
     else link.removeAttribute('aria-current');
   });
   if (!section) return;
+  if (pageId === 'about') {
+    document.querySelector('.hero .term-prompt').textContent = 'nguyen:~$';
+    document.querySelector('.hero .term-cmd').textContent = 'whoami';
+  }
   document.title = `${section.title} | ${content.name} - ${content.title}`;
   const panel = document.createElement('section');
   panel.id = section.id;
@@ -40,9 +49,23 @@
   heading.id = `${section.id}-heading`;
   heading.className = 'section-title';
   heading.textContent = section.title;
+  if (pageId === 'about') {
+    const sectionHead = document.createElement('div');
+    sectionHead.className = 'section-head';
+    const index = document.createElement('span');
+    index.className = 'section-index';
+    index.textContent = '01';
+    index.setAttribute('aria-hidden', 'true');
+    const rule = document.createElement('span');
+    rule.className = 'section-rule';
+    rule.setAttribute('aria-hidden', 'true');
+    sectionHead.append(index, heading, rule);
+    panel.append(sectionHead);
+  } else panel.append(heading);
   const introduction = document.createElement('p');
   introduction.className = 'about-text';
   introduction.textContent = section.introduction;
+  introduction.hidden = !section.introduction?.trim();
   const grid = document.createElement('div');
   grid.className = 'services-grid';
   section.cards.forEach(card => {
@@ -52,9 +75,24 @@
     title.textContent = card.title;
     const description = document.createElement('p');
     description.textContent = card.description;
+    description.hidden = !card.description?.trim();
     article.append(title, description);
+    if (pageId === 'about' && card.symbol) {
+      const symbol = document.createElement('span');
+      symbol.className = 'about-card-symbol';
+      symbol.textContent = card.symbol;
+      symbol.setAttribute('aria-hidden', 'true');
+      article.prepend(symbol);
+    }
     grid.append(article);
   });
-  panel.append(heading, introduction, grid);
+  panel.append(introduction);
+  if (pageId === 'about') {
+    const label = document.createElement('h3');
+    label.className = 'about-services-label';
+    label.textContent = '// what I do';
+    panel.append(label);
+  }
+  panel.append(grid);
   sections.append(panel);
 })();
