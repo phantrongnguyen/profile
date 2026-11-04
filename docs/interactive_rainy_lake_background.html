@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Rainy Lake Effect</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    
+    <style>
+/* Rainy lake interface. Layout utilities are supplied by Tailwind in index.html. */
+/* Custom scrollbars & canvas setup */
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #060a12;
+    color: #f1f5f9;
+    overflow: hidden;
+    user-select: none;
+}
+
+canvas {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Glassmorphism panel styling */
+.glass-panel {
+    background: rgba(13, 22, 38, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Custom styled Range Inputs */
+input[type=range] {
+    -webkit-appearance: none;
+    background: transparent;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 9999px;
+    transition: background 0.2s;
+}
+
+input[type=range]:hover::-webkit-slider-runnable-track {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+input[type=range]::-webkit-slider-thumb {
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #38bdf8;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -5px;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+    transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    background: #7dd3fc;
+}
+
+/* Toggle switch design */
+.toggle-checkbox:checked {
+    right: 0;
+    border-color: #38bdf8;
+}
+.toggle-checkbox:checked + .toggle-label {
+    background-color: #38bdf8;
+}
+
+/* Hide Scrollbar for control drawer if overflowing */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+
+    </style>
+    
+</head>
+<body class="h-full w-full relative overflow-hidden bg-slate-950 text-slate-100">
+
+    <!-- Canvas Background -->
+    <canvas id="rainCanvas" aria-label="Animated rain and interactive lake ripples"></canvas>
+
+    <!-- Overlay Gradient for Atmosphere (Depth & Horizon) -->
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-950/80 via-transparent to-slate-950/90"></div>
+
+    <!-- UI Header Overlay -->
+    <header class="absolute top-0 left-0 right-0 p-6 flex justify-end items-center z-10 pointer-events-none">
+
+        <div class="flex items-center space-x-3 pointer-events-auto">
+            <button id="toggleControlsBtn" aria-label="Customize weather" title="Customize weather" class="glass-panel hover:bg-slate-800/80 text-slate-200 w-10 h-10 rounded-2xl text-xs font-medium transition-all duration-300 flex items-center justify-center border border-white/10 active:scale-95 shadow-lg">
+                <i class="fa-solid fa-sliders text-sky-400" aria-hidden="true"></i>
+            </button>
+        </div>
+    </header>
+
+
+    <!-- Control Panel Drawer -->
+    <aside id="controlPanel" class="fixed top-0 right-0 h-full w-full sm:w-96 glass-panel border-l border-white/10 z-20 transform translate-x-full transition-transform duration-500 ease-out flex flex-col justify-between p-6 overflow-y-auto no-scrollbar">
+        <div class="space-y-6">
+            <!-- Header -->
+            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-sliders text-sky-400"></i>
+                    <h2 class="font-semibold text-slate-100 text-base">Weather Settings</h2>
+                </div>
+                <button aria-label="Close weather settings" id="closeControlsBtn" class="text-slate-400 hover:text-white transition-colors p-1 rounded-lg hover:bg-white/5">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Presets -->
+            <div class="space-y-2">
+                <label class="text-xs font-medium text-slate-400 uppercase tracking-wider">Presets</label>
+                <div class="grid grid-cols-3 gap-2">
+                    <button data-preset="drizzle" class="preset-btn px-3 py-2 rounded-xl text-xs bg-white/5 hover:bg-white/10 border border-white/5 transition text-slate-300 font-medium">Drizzle</button>
+                    <button data-preset="storm" class="preset-btn px-3 py-2 rounded-xl text-xs bg-white/5 hover:bg-white/10 border border-white/5 transition text-slate-300 font-medium">Storm</button>
+                    <button data-preset="calm" class="preset-btn px-3 py-2 rounded-xl text-xs bg-white/5 hover:bg-white/10 border border-white/5 transition text-slate-300 font-medium">Gentle</button>
+                </div>
+            </div>
+
+            <!-- Rain Intensity Slider -->
+            <div class="space-y-2">
+                <div class="flex justify-between text-xs">
+                    <span class="text-slate-300 font-medium">Rain Intensity</span>
+                    <span id="rainVal" class="text-sky-400 font-semibold">120</span>
+                </div>
+                <input type="range" aria-label="Rain intensity" id="rainIntensity" min="0" max="300" value="120" class="w-full">
+            </div>
+
+            <!-- Ripple Speed / Size -->
+            <div class="space-y-2">
+                <div class="flex justify-between text-xs">
+                    <span class="text-slate-300 font-medium">Ripple Frequency</span>
+                    <span id="rippleVal" class="text-sky-400 font-semibold">70%</span>
+                </div>
+                <input type="range" aria-label="Ripple frequency" id="rippleFrequency" min="10" max="100" value="70" class="w-full">
+            </div>
+
+            <!-- Wind Speed / Angle -->
+            <div class="space-y-2">
+                <div class="flex justify-between text-xs">
+                    <span class="text-slate-300 font-medium">Wind Angle & Speed</span>
+                    <span id="windVal" class="text-sky-400 font-semibold">-12°</span>
+                </div>
+                <input type="range" aria-label="Wind angle and speed" id="windAngle" min="-45" max="45" value="-12" class="w-full">
+            </div>
+
+            <!-- Water Color Mode -->
+            <div class="space-y-2">
+                <label class="text-xs font-medium text-slate-400 uppercase tracking-wider">Water Aesthetics</label>
+                <div class="grid grid-cols-2 gap-2">
+                    <button data-theme="midnight" class="theme-btn px-3 py-2 rounded-xl text-xs bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 font-medium transition">Midnight Blue</button>
+                    <button data-theme="emerald" class="theme-btn px-3 py-2 rounded-xl text-xs bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 font-medium transition">Emerald Lake</button>
+                    <button data-theme="violet" class="theme-btn px-3 py-2 rounded-xl text-xs bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 font-medium transition">Deep Violet</button>
+                    <button data-theme="monochrome" class="theme-btn px-3 py-2 rounded-xl text-xs bg-sky-500/20 border border-sky-500/40 text-sky-200 font-medium transition">Silver Night</button>
+                </div>
+            </div>
+
+            <!-- Toggles -->
+            <div class="space-y-4 pt-2 border-t border-white/10">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs text-slate-300 font-medium">Lightning Flashes</span>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" aria-label="Lightning flashes" id="lightningToggle" class="sr-only peer" checked>
+                        <div class="w-9 h-5 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-sky-500"></div>
+                    </label>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <span class="text-xs text-slate-300 font-medium">Perspective Horizon Line</span>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" aria-label="Perspective horizon line" id="horizonToggle" class="sr-only peer" checked>
+                        <div class="w-9 h-5 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-sky-500"></div>
+                    </label>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <span class="text-xs text-slate-300 font-medium">Atmospheric Fog</span>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" aria-label="Atmospheric fog" id="fogToggle" class="sr-only peer" checked>
+                        <div class="w-9 h-5 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-sky-500"></div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Info -->
+        <div class="pt-6 border-t border-white/10 text-center">
+            <p class="text-xs text-slate-500">Interactive Canvas Engine &bull; HTML5 & CSS3</p>
+        </div>
+    </aside>
+
+    <!-- Embedded simulation logic -->
+    <script>
+tailwind.config = {
+    theme: {
+        extend: {
+            fontFamily: {
+                sans: ['Plus Jakarta Sans', 'sans-serif'],
+            },
+            colors: {
+                rain: {
+                    900: '#0b1321',
+                    800: '#111c30',
+                    700: '#1a2a45',
+                    500: '#38bdf8',
+                }
+            }
+        }
+    }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('rainCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Controls & UI elements
+    const toggleControlsBtn = document.getElementById('toggleControlsBtn');
+    const closeControlsBtn = document.getElementById('closeControlsBtn');
+    const controlPanel = document.getElementById('controlPanel');
+    const rainSlider = document.getElementById('rainIntensity');
+    const rainValDisplay = document.getElementById('rainVal');
+    const rippleSlider = document.getElementById('rippleFrequency');
+    const rippleValDisplay = document.getElementById('rippleVal');
+    const windSlider = document.getElementById('windAngle');
+    const windValDisplay = document.getElementById('windVal');
+    const lightningToggle = document.getElementById('lightningToggle');
+    const horizonToggle = document.getElementById('horizonToggle');
+    const fogToggle = document.getElementById('fogToggle');
+
+    // Window Dimensions
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    // Simulation Horizon setup (Lake Perspective)
+    let horizonY = height * 0.35; // Water starts 35% from the top
+
+    // Simulation Config & State
+    const config = {
+        rainCount: parseInt(rainSlider.value),
+        rippleChance: parseInt(rippleSlider.value) / 100,
+        wind: parseInt(windSlider.value),
+        enableLightning: lightningToggle.checked,
+        enableHorizon: horizonToggle.checked,
+        enableFog: fogToggle.checked,
+        theme: 'monochrome'
+    };
+
+    // Color Palettes
+    const themes = {
+        midnight: {
+            sky: ['#040814', '#0d182e', '#16243e'],
+            waterTop: '#091326',
+            waterBottom: '#02050c',
+            dropColor: 'rgba(186, 230, 253, ',
+            rippleColor: 'rgba(125, 211, 252, '
+        },
+        emerald: {
+            sky: ['#02120d', '#08251c', '#0f382a'],
+            waterTop: '#07241b',
+            waterBottom: '#010a07',
+            dropColor: 'rgba(167, 243, 208, ',
+            rippleColor: 'rgba(110, 231, 183, '
+        },
+        violet: {
+            sky: ['#0d0714', '#1c0d2e', '#291440'],
+            waterTop: '#170a29',
+            waterBottom: '#06020c',
+            dropColor: 'rgba(233, 213, 255, ',
+            rippleColor: 'rgba(216, 180, 254, '
+        },
+        monochrome: {
+            sky: ['#080a0c', '#12161a', '#1e2329'],
+            waterTop: '#11151a',
+            waterBottom: '#030405',
+            dropColor: 'rgba(226, 232, 240, ',
+            rippleColor: 'rgba(203, 213, 225, '
+        }
+    };
+
+    // Lightning Effect State
+    let lightningAlpha = 0;
+    let lightningFlashTimer = 0;
+
+    // Arrays for entities
+    const raindrops = [];
+    const ripples = [];
+
+    // Window Resize Listener
+    window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        horizonY = height * 0.35;
+    });
+
+    // Raindrop Class
+    class Raindrop {
+        constructor() {
+            this.reset(true);
+        }
+
+        reset(initial = false) {
+            this.x = Math.random() * (width + 400) - 200;
+            this.y = initial ? Math.random() * height : -50;
+            this.z = Math.random(); // Depth factor (0 = far, 1 = near)
+            this.length = 15 + this.z * 35;
+            this.speed = 12 + this.z * 18;
+            this.opacity = 0.15 + this.z * 0.55;
+        }
+
+        update() {
+            // Movement influenced by wind
+            this.y += this.speed;
+            this.x += config.wind * 0.3;
+
+            // Calculate water surface collision point based on perspective
+            const targetY = horizonY + (1 - this.z) * (height - horizonY);
+
+            // When drop hits water surface
+            if (this.y >= targetY) {
+                // Spawn water ripple if within water horizon area
+                if (Math.random() < config.rippleChance) {
+                    ripples.push(new Ripple(this.x, targetY, this.z));
+                }
+                this.reset();
+            }
+
+            // Reset if out of screen bounds
+            if (this.y > height || this.x < -300 || this.x > width + 300) {
+                this.reset();
+            }
+        }
+
+        draw() {
+            ctx.beginPath();
+            ctx.strokeStyle = `${themes[config.theme].dropColor}${this.opacity})`;
+            ctx.lineWidth = 0.8 + this.z * 1.2;
+            ctx.moveTo(this.x, this.y);
+            ctx.lineTo(
+                this.x + config.wind * 0.8,
+                this.y + this.length
+            );
+            ctx.stroke();
+        }
+    }
+
+    // Water Ripple Class (Elliptical Perspective)
+    class Ripple {
+        constructor(x, y, z) {
+            this.x = x;
+            this.y = y;
+            this.z = z; // Depth relative scale
+            this.radius = 1;
+            this.maxRadius = (15 + Math.random() * 25) * (0.3 + z * 0.7);
+            this.speed = (0.4 + Math.random() * 0.6) * (0.5 + z * 0.5);
+            this.opacity = 0.7 + z * 0.3;
+            this.lineWidth = 1 + z * 1.5;
+        }
+
+        update() {
+            this.radius += this.speed;
+            this.opacity -= 0.012 * (1.2 - this.z * 0.5);
+        }
+
+        draw() {
+            if (this.opacity <= 0) return;
+
+            ctx.save();
+            ctx.beginPath();
+            // Compress Y-axis to give perspective effect on water plane
+            const perspectiveYScale = 0.35 + (this.y - horizonY) / (height - horizonY) * 0.25;
+            ctx.ellipse(
+                this.x, 
+                this.y, 
+                this.radius, 
+                this.radius * perspectiveYScale, 
+                0, 0, Math.PI * 2
+            );
+            ctx.strokeStyle = `${themes[config.theme].rippleColor}${this.opacity})`;
+            ctx.lineWidth = this.lineWidth;
+            ctx.stroke();
+
+            // Optional inner secondary faint ring for realism
+            if (this.radius > 6) {
+                ctx.beginPath();
+                ctx.ellipse(
+                    this.x, 
+                    this.y, 
+                    this.radius * 0.5, 
+                    (this.radius * 0.5) * perspectiveYScale, 
+                    0, 0, Math.PI * 2
+                );
+                ctx.strokeStyle = `${themes[config.theme].rippleColor}${this.opacity * 0.5})`;
+                ctx.lineWidth = this.lineWidth * 0.6;
+                ctx.stroke();
+            }
+            ctx.restore();
+        }
+    }
+
+    // Sync Raindrops count based on config
+    function adjustRaindrops() {
+        while (raindrops.length < config.rainCount) {
+            raindrops.push(new Raindrop());
+        }
+        while (raindrops.length > config.rainCount) {
+            raindrops.pop();
+        }
+    }
+
+    // Handle Lightning Random Flashes
+    function updateLightning() {
+        if (!config.enableLightning) {
+            lightningAlpha = 0;
+            return;
+        }
+
+        if (lightningFlashTimer <= 0) {
+            if (Math.random() < 0.003) { // Small chance per frame
+                lightningAlpha = 0.7 + Math.random() * 0.3;
+                lightningFlashTimer = 10 + Math.random() * 20;
+            }
+        } else {
+            lightningFlashTimer--;
+            lightningAlpha *= 0.88; // Fade out fast
+        }
+    }
+
+    // Draw Background, Horizon, Atmosphere
+    function drawScene() {
+        const currentTheme = themes[config.theme];
+
+        // 1. Sky Gradient
+        const skyGrad = ctx.createLinearGradient(0, 0, 0, horizonY);
+        skyGrad.addColorStop(0, currentTheme.sky[0]);
+        skyGrad.addColorStop(0.5, currentTheme.sky[1]);
+        skyGrad.addColorStop(1, currentTheme.sky[2]);
+        ctx.fillStyle = skyGrad;
+        ctx.fillRect(0, 0, width, horizonY);
+
+        // 2. Water Surface Gradient
+        const waterGrad = ctx.createLinearGradient(0, horizonY, 0, height);
+        waterGrad.addColorStop(0, currentTheme.waterTop);
+        waterGrad.addColorStop(1, currentTheme.waterBottom);
+        ctx.fillStyle = waterGrad;
+        ctx.fillRect(0, horizonY, width, height - horizonY);
+
+        // 3. Subtle Horizon Glow Line
+        if (config.enableHorizon) {
+            ctx.beginPath();
+            ctx.moveTo(0, horizonY);
+            ctx.lineTo(width, horizonY);
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            // Mist at horizon
+            const horizonGlow = ctx.createLinearGradient(0, horizonY - 20, 0, horizonY + 40);
+            horizonGlow.addColorStop(0, 'rgba(255, 255, 255, 0)');
+            horizonGlow.addColorStop(0.5, 'rgba(186, 230, 253, 0.05)');
+            horizonGlow.addColorStop(1, 'rgba(255, 255, 255, 0)');
+            ctx.fillStyle = horizonGlow;
+            ctx.fillRect(0, horizonY - 20, width, 60);
+        }
+
+        // 4. Fog / Mist Over Water
+        if (config.enableFog) {
+            const fogGrad = ctx.createLinearGradient(0, horizonY, 0, height);
+            fogGrad.addColorStop(0, 'rgba(15, 23, 42, 0.35)');
+            fogGrad.addColorStop(0.4, 'rgba(15, 23, 42, 0.1)');
+            fogGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = fogGrad;
+            ctx.fillRect(0, horizonY, width, height - horizonY);
+        }
+
+        // 5. Lightning Flash Overlay
+        if (lightningAlpha > 0.01) {
+            ctx.fillStyle = `rgba(240, 249, 255, ${lightningAlpha * 0.25})`;
+            ctx.fillRect(0, 0, width, height);
+        }
+    }
+
+    // Main Animation Loop
+    function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Render atmosphere & background
+        updateLightning();
+        drawScene();
+
+        // Render and update Ripples
+        for (let i = ripples.length - 1; i >= 0; i--) {
+            const ripple = ripples[i];
+            ripple.update();
+            ripple.draw();
+            if (ripple.opacity <= 0) {
+                ripples.splice(i, 1);
+            }
+        }
+
+        // Render and update Raindrops
+        for (let i = 0; i < raindrops.length; i++) {
+            raindrops[i].update();
+            raindrops[i].draw();
+        }
+
+        requestAnimationFrame(animate);
+    }
+
+    // Interactive Click & Drag Ripple Trigger
+    let isDragging = false;
+
+    function triggerCustomRipple(e) {
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        // Only create ripples on the water surface
+        if (y >= horizonY - 10) {
+            // Calculate depth z based on position
+            const z = Math.min(1, Math.max(0.1, (y - horizonY) / (height - horizonY)));
+            ripples.push(new Ripple(x, Math.max(y, horizonY), z));
+            
+            // Add an extra secondary ripple for stronger user clicks
+            setTimeout(() => {
+                ripples.push(new Ripple(x, Math.max(y, horizonY), z));
+            }, 120);
+        }
+
+    }
+
+    window.addEventListener('mousedown', (e) => {
+        // Ignore click if user is clicking on controls
+        if (e.target.closest('#controlPanel') || e.target.closest('#toggleControlsBtn')) return;
+        isDragging = true;
+        triggerCustomRipple(e);
+    });
+
+    window.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+            triggerCustomRipple(e);
+        }
+    });
+
+    window.addEventListener('mouseup', () => { isDragging = false; });
+
+    // Touch events support for mobile devices
+    window.addEventListener('touchstart', (e) => {
+        if (e.touches.length > 0) {
+            const touch = e.touches[0];
+            if (touch.target.closest('#controlPanel') || touch.target.closest('#toggleControlsBtn')) return;
+            triggerCustomRipple(touch);
+        }
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+        if (e.touches.length > 0) {
+            const touch = e.touches[0];
+            if (touch.target.closest('#controlPanel')) return;
+            triggerCustomRipple(touch);
+        }
+    }, { passive: true });
+
+    // Control Event Handlers
+    rainSlider.addEventListener('input', (e) => {
+        config.rainCount = parseInt(e.target.value);
+        rainValDisplay.textContent = e.target.value;
+        adjustRaindrops();
+    });
+
+    rippleSlider.addEventListener('input', (e) => {
+        config.rippleChance = parseInt(e.target.value) / 100;
+        rippleValDisplay.textContent = `${e.target.value}%`;
+    });
+
+    windSlider.addEventListener('input', (e) => {
+        config.wind = parseInt(e.target.value);
+        windValDisplay.textContent = `${e.target.value}°`;
+    });
+
+    lightningToggle.addEventListener('change', (e) => {
+        config.enableLightning = e.target.checked;
+    });
+
+    horizonToggle.addEventListener('change', (e) => {
+        config.enableHorizon = e.target.checked;
+    });
+
+    fogToggle.addEventListener('change', (e) => {
+        config.enableFog = e.target.checked;
+    });
+
+    // Theme Switcher Buttons
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.theme-btn').forEach(b => {
+                b.classList.remove('bg-sky-500/20', 'border-sky-500/40', 'text-sky-200');
+                b.classList.add('bg-white/5', 'border-white/10', 'text-slate-300');
+            });
+            btn.classList.add('bg-sky-500/20', 'border-sky-500/40', 'text-sky-200');
+            btn.classList.remove('bg-white/5', 'border-white/10', 'text-slate-300');
+            
+            config.theme = btn.getAttribute('data-theme');
+        });
+    });
+
+    // Preset Buttons Logic
+    document.querySelectorAll('.preset-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const preset = btn.getAttribute('data-preset');
+            if (preset === 'drizzle') {
+                rainSlider.value = 50;
+                rippleSlider.value = 40;
+                windSlider.value = -5;
+                lightningToggle.checked = false;
+            } else if (preset === 'storm') {
+                rainSlider.value = 280;
+                rippleSlider.value = 95;
+                windSlider.value = -30;
+                lightningToggle.checked = true;
+            } else if (preset === 'calm') {
+                rainSlider.value = 20;
+                rippleSlider.value = 20;
+                windSlider.value = 0;
+                lightningToggle.checked = false;
+            }
+
+            // Dispatch input events to update UI
+            rainSlider.dispatchEvent(new Event('input'));
+            rippleSlider.dispatchEvent(new Event('input'));
+            windSlider.dispatchEvent(new Event('input'));
+            lightningToggle.dispatchEvent(new Event('change'));
+        });
+    });
+
+    // UI Panel Toggle
+    toggleControlsBtn.addEventListener('click', () => {
+        controlPanel.classList.remove('translate-x-full');
+    });
+
+    closeControlsBtn.addEventListener('click', () => {
+        controlPanel.classList.add('translate-x-full');
+    });
+
+    // Initialize simulation
+    adjustRaindrops();
+    animate();
+});
+
+
+
+    </script>
+</body>
+</html>
+
+
+
