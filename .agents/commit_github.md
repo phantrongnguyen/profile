@@ -1,6 +1,14 @@
 # GitHub Commit Convention
 
-## 1. Mục đích
+## 1. Quy định áp dụng cho dự án này
+
+- Chỉ tạo commit cục bộ trên nhánh `master`; kiểm tra nhánh hiện tại trước khi commit.
+- Chỉ stage và commit các thay đổi thuộc phạm vi người dùng yêu cầu; không sửa các nội dung khác.
+- Không tạo nhánh mới, không tạo Pull Request, không merge và tuyệt đối không chạy `git push`.
+- Ghi rõ các lệnh đã dùng và mã commit sau khi hoàn tất.
+- Quy định này được ưu tiên áp dụng; các hướng dẫn về nhánh khác, push, Pull Request và merge bên dưới chỉ là tài liệu tham khảo.
+
+## 2. Mục đích
 
 Tài liệu này quy định các nguyên tắc sử dụng Git và GitHub trong quá trình phát triển phần mềm nhằm:
 
@@ -13,7 +21,7 @@ Tài liệu này quy định các nguyên tắc sử dụng Git và GitHub trong
 
 ---
 
-# 2. Nguyên tắc chung
+# 3. Nguyên tắc chung
 
 Mỗi commit phải:
 
@@ -47,7 +55,7 @@ git commit -m "feat(auth): add JWT authentication"
 
 ---
 
-# 3. Quy ước Commit Message
+# 4. Quy ước Commit Message
 
 Dự án sử dụng **Conventional Commits**.
 
@@ -79,9 +87,9 @@ docs: update installation guide
 
 ---
 
-# 4. Các loại Commit
+# 5. Các loại Commit
 
-## 4.1. feat
+## 5.1. feat
 
 Sử dụng khi bổ sung **chức năng mới**.
 
@@ -95,7 +103,7 @@ feat(recommendation): add learning recommendation endpoint
 
 ---
 
-## 4.2. fix
+## 5.2. fix
 
 Sử dụng khi sửa **bug/lỗi**.
 
@@ -109,7 +117,7 @@ fix(model): handle missing prediction features
 
 ---
 
-## 4.3. refactor
+## 5.3. refactor
 
 Sử dụng khi thay đổi cấu trúc hoặc cách triển khai nhưng **không thay đổi hành vi bên ngoài**.
 
@@ -123,7 +131,7 @@ refactor(model): separate model loading service
 
 ---
 
-## 4.4. docs
+## 5.4. docs
 
 Sử dụng khi thay đổi tài liệu.
 
@@ -137,7 +145,7 @@ docs(api): add prediction API documentation
 
 ---
 
-## 4.5. test
+## 5.5. test
 
 Sử dụng khi thêm hoặc sửa test.
 
@@ -151,7 +159,7 @@ test(api): add health check endpoint tests
 
 ---
 
-## 4.6. chore
+## 5.6. chore
 
 Sử dụng cho các thay đổi bảo trì không liên quan trực tiếp đến source code.
 
@@ -172,7 +180,7 @@ chore: configure pre-commit hooks
 
 ---
 
-## 4.7. build
+## 5.7. build
 
 Sử dụng khi thay đổi hệ thống build hoặc dependency.
 
@@ -186,7 +194,7 @@ build: upgrade FastAPI dependency
 
 ---
 
-## 4.8. ci
+## 5.8. ci
 
 Sử dụng khi thay đổi CI/CD.
 
@@ -200,7 +208,7 @@ ci: add automated test pipeline
 
 ---
 
-## 4.9. perf
+## 5.9. perf
 
 Sử dụng khi tối ưu hiệu năng.
 
@@ -214,7 +222,7 @@ perf(data): optimize Spark transformation
 
 ---
 
-## 4.10. revert
+## 5.10. revert
 
 Sử dụng khi hoàn tác một commit trước đó.
 
@@ -224,7 +232,7 @@ revert: revert feat(auth): add JWT authentication
 
 ---
 
-# 5. Scope
+# 6. Scope
 
 `scope` nên thể hiện module hoặc thành phần bị ảnh hưởng.
 
@@ -263,7 +271,7 @@ Không nên tạo scope quá chi tiết nếu không cần thiết.
 
 ---
 
-# 6. Quy tắc viết Description
+# 7. Quy tắc viết Description
 
 Description phải:
 
@@ -304,7 +312,7 @@ refactor(service): separate prediction logic
 
 ---
 
-# 7. Breaking Changes
+# 8. Breaking Changes
 
 Nếu thay đổi làm **phá vỡ API hoặc hành vi tương thích ngược**, phải đánh dấu Breaking Change.
 
@@ -326,7 +334,7 @@ Breaking Change phải được thông báo rõ ràng trong Pull Request.
 
 ---
 
-# 8. Commit Body
+# 9. Commit Body
 
 Đối với thay đổi phức tạp, có thể sử dụng body để giải thích:
 
@@ -343,7 +351,7 @@ Không bắt buộc sử dụng body đối với commit đơn giản.
 
 ---
 
-# 9. Atomic Commit
+# 10. Atomic Commit
 
 Mỗi commit nên thực hiện **một thay đổi logic chính**.
 
@@ -370,95 +378,7 @@ docs(readme): update API documentation
 * Theo dõi lịch sử phát triển tốt hơn.
 
 ---
-
-# 10. Branch Naming Convention
-
-Tên branch phải thể hiện mục đích của branch.
-
-Cú pháp:
-
-```text
-<type>/<short-description>
-```
-
-Ví dụ:
-
-```text
-feat/user-authentication
-feat/recommendation-api
-fix/model-loading
-fix/database-connection
-refactor/backend-architecture
-docs/api-documentation
-test/recommendation-service
-```
-
-Đối với branch cá nhân:
-
-```text
-feat/phantrongnguyen/recommendation-api
-```
-
-Nếu dự án yêu cầu mã task:
-
-```text
-feat/DS-123-recommendation-api
-fix/DS-124-model-loading
-```
-
----
-
-# 11. Không commit trực tiếp vào Main
-
-Không được phát triển trực tiếp trên:
-
-```text
-main
-```
-
-hoặc:
-
-```text
-master
-```
-
-Quy trình chuẩn:
-
-```text
-main
-  │
-  └── feature branch
-          │
-          ├── commit
-          ├── commit
-          │
-          └── Pull Request
-                    │
-                    └── Code Review
-                            │
-                            └── Merge
-```
-
-Ví dụ:
-
-```bash
-git checkout main
-git pull origin main
-
-git checkout -b feat/recommendation-api
-```
-
-Sau khi hoàn thành:
-
-```bash
-git push -u origin feat/recommendation-api
-```
-
-Sau đó tạo Pull Request.
-
----
-
-# 12. Pull Request
+# 11. Pull Request
 
 Pull Request phải chứa:
 
@@ -499,7 +419,7 @@ Closes #123
 
 ---
 
-# 13. Code Review
+# 12. Code Review
 
 Pull Request cần được review trước khi merge.
 
@@ -525,7 +445,7 @@ Không nên merge khi:
 
 ---
 
-# 14. Quy định về Secret và Environment
+# 13. Quy định về Secret và Environment
 
 Tuyệt đối không commit:
 
@@ -579,7 +499,7 @@ MODEL_PATH=
 
 ---
 
-# 15. Quy định về Model và Data
+# 14. Quy định về Model và Data
 
 Đối với dự án Data Science / Machine Learning:
 
@@ -622,7 +542,7 @@ nên được quản lý theo chính sách riêng của project.
 
 ---
 
-# 16. Quy định về File tạm
+# 15. Quy định về File tạm
 
 Không commit các file:
 
@@ -645,7 +565,7 @@ Các file này phải được khai báo trong `.gitignore`.
 
 ---
 
-# 17. Quy trình Commit chuẩn
+# 16. Quy trình Commit chuẩn
 
 Quy trình đề xuất:
 
@@ -677,7 +597,7 @@ git push origin <branch-name>
 
 ---
 
-# 18. Không sử dụng git add . một cách mù quáng
+# 17. Không sử dụng git add . một cách mù quáng
 
 Trước khi commit:
 
@@ -695,7 +615,7 @@ Chỉ commit những file thực sự thuộc về task.
 
 ---
 
-# 19. Commit trước khi Push
+# 18. Commit trước khi Push
 
 Trước khi push, cần kiểm tra:
 
@@ -727,62 +647,7 @@ Chỉ push khi project đạt trạng thái hợp lệ.
 
 ---
 
-# 20. Ví dụ hoàn chỉnh
-
-### Tạo feature
-
-```bash
-git checkout -b feat/recommendation-api
-```
-
-### Code
-
-```text
-app/
-├── api/
-├── services/
-├── schemas/
-└── models/
-```
-
-### Commit
-
-```bash
-git add app/
-git commit -m "feat(recommendation): add prediction service"
-```
-
-Tiếp tục:
-
-```bash
-git add tests/
-git commit -m "test(recommendation): add prediction service tests"
-```
-
-Cập nhật tài liệu:
-
-```bash
-git add README.md
-git commit -m "docs(readme): document recommendation API"
-```
-
-Push:
-
-```bash
-git push -u origin feat/recommendation-api
-```
-
-Tạo Pull Request:
-
-```text
-feat(recommendation): add personalized learning API
-```
-
-Sau khi Code Review và CI/CD thành công mới merge vào `main`.
-
----
-
-# 21. Quy tắc Squash
+# 19. Quy tắc Squash
 
 Đối với feature branch có nhiều commit nhỏ:
 
@@ -809,7 +674,7 @@ Mục tiêu là lịch sử `main` phải **sạch, rõ ràng và có ý nghĩa*
 
 ---
 
-# 22. Quy tắc Merge
+# 20. Quy tắc Merge
 
 Ưu tiên:
 
@@ -851,7 +716,7 @@ git push --force-with-lease
 
 ---
 
-# 23. Checklist trước khi Commit
+# 21. Checklist trước khi Commit
 
 * [ ] Code đã được kiểm tra.
 * [ ] Không có file nhạy cảm.
@@ -867,7 +732,7 @@ git push --force-with-lease
 
 ---
 
-# 24. Checklist trước khi tạo Pull Request
+# 22. Checklist trước khi tạo Pull Request
 
 * [ ] Branch đúng convention.
 * [ ] Branch đã cập nhật với `main`.
@@ -882,7 +747,7 @@ git push --force-with-lease
 
 ---
 
-# 25. Commit Message Quick Reference
+# 23. Commit Message Quick Reference
 
 | Type       | Sử dụng          | Ví dụ                                 |
 | ---------- | ---------------- | ------------------------------------- |
@@ -899,7 +764,7 @@ git push --force-with-lease
 
 ---
 
-# 26. Quy tắc vàng
+# 24. Quy tắc vàng
 
 > **Một commit = một mục đích rõ ràng.**
 
@@ -930,7 +795,7 @@ update
 
 ---
 
-# 27. Recommended Project Workflow
+# 25. Recommended Project Workflow
 
 Đối với dự án phát triển phần mềm doanh nghiệp:
 
@@ -959,5 +824,3 @@ Merge
      ↓
 Deploy
 ```
-
-Đây là workflow được khuyến nghị áp dụng thống nhất cho toàn bộ repository.
