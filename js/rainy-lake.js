@@ -49,7 +49,7 @@
     const pendingRipples = [];
     const raindrops = [];
     const ripples = [];
-    const config = { rainCount: 120, rippleChance: 0.7, wind: -12,
+    const config = { rainCount: 3, rippleChance: 0.7, wind: -9,
         enableLightning: false, enableHorizon: true, enableFog: true, theme: 'monochrome' };
     const background = document.createElement('canvas');
     const backgroundCtx = background.getContext('2d');

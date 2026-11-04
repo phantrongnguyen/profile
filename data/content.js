@@ -19,13 +19,14 @@ window.PROFILE_CONTENT = {
       { title: "What I do", description: "Describe a service or area of expertise." },
       { title: "How I work", description: "Describe your approach to projects." }
     ] },
-    { id: "resume", title: "Resume", introduction: "Add your experience and education.", cards: [
+    { id: "experience", title: "experience", introduction: "Add your experience and education.", cards: [
       { title: "Role or qualification", description: "Organization, period, and key responsibilities." }
     ] },
-    { id: "portfolio", title: "Portfolio", introduction: "Add projects you want to showcase.", cards: [
+    { id: "blogs", title: "BLOGS", introduction: "", cards: [] },
+    { id: "projects", title: "PROJECTS", introduction: "Add projects you want to showcase.", cards: [
       { title: "Project title", description: "Describe the problem, your contribution, and the outcome." }
     ] },
-    { id: "interests", title: "Interests", introduction: "Share what you enjoy learning or creating.", cards: [] },
-    { id: "honors", title: "Honors", introduction: "Add awards or achievements here.", cards: [] }
+    { id: "skills", title: "SKILLS", introduction: "Share what you enjoy learning or creating.", cards: [] },
+    { id: "education", title: "EDUCATION", introduction: "Add awards or achievements here.", cards: [] }
   ]
 };
