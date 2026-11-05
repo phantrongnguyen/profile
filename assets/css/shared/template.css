@@ -1,5 +1,5 @@
 /* Adapt the original console layout to a text-only starter. */
-:root { --font-sans: system-ui, sans-serif; --font-mono: ui-monospace, Consolas, monospace; }
+:root { --font-sans: system-ui, sans-serif; }
 [hidden] { display: none !important; }
 .content-area { padding: clamp(20px, 5vw, 64px); flex: 1; }
 .tab-navigation { display: flex; overflow-x: auto; padding: 12px 20px; gap: 8px; }

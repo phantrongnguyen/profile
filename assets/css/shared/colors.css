@@ -39,7 +39,7 @@
   /* ---- Typography ----------------------------------------- */
   --font-display: "Space Grotesk", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-mono: ui-monospace, Consolas, monospace;
 
   /* fluid type scale */
   --fs-mono: 0.75rem;         /* system chrome / eyebrows        */

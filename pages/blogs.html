@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A customizable profile website template.">
+  <meta name="description" content="Bài viết về kỹ thuật dữ liệu, công nghệ và các dự án thực tế của Phan Trọng Nguyên.">
   <meta name="theme-color" content="#08090b">
   <title>BLOGS | Phan Trong Nguyen - Data Engineer</title>
   <link rel="icon" type="image/png" href="../assets/images/letter-n.png">
-  <link rel="stylesheet" href="../css/colors.css">
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/layout.css">
-  <link rel="stylesheet" href="../css/components.css">
-  <link rel="stylesheet" href="../css/template.css">
-  <link rel="stylesheet" href="../css/rainy-lake.css">
-  <script src="../js/rainy-lake.js" defer></script>
-  <script src="../data/content.js" defer></script>
-  <script src="../js/main.js" defer></script>
+  <link rel="stylesheet" href="../assets/css/shared/colors.css">
+  <link rel="stylesheet" href="../assets/css/shared/style.css">
+  <link rel="stylesheet" href="../assets/css/shared/layout.css">
+  <link rel="stylesheet" href="../assets/css/shared/components.css">
+  <link rel="stylesheet" href="../assets/css/shared/template.css">
+  <link rel="stylesheet" href="../assets/css/features/rainy-lake.css">
+  <link rel="stylesheet" href="../assets/css/features/blogs.css">
+  <script src="../assets/js/effects/rainy-lake.js" defer></script>
+  <script src="../assets/js/profile.js" defer></script>
 </head>
 <body data-page="blogs">
   <div class="bg" aria-hidden="true"><div class="bg-grid"></div><div class="bg-glow"></div></div>
@@ -57,9 +57,37 @@
         <a class="tab-btn" data-page="projects" href="projects.html">PROJECTS</a>
       </div></nav>
       <div class="content-area">
-        <header class="hero"><div class="hero-term"><span class="term-prompt">$</span><span class="term-cmd">welcome</span></div><h2 class="hero-headline" id="headline"></h2><p class="hero-sub" id="subtitle"></p></header>
-        <div id="sections"></div>
-        <noscript>Please enable JavaScript to display the template content.</noscript>
+        <header class="hero blog-hero">
+          <p class="blog-kicker"><span aria-hidden="true">//</span> PHAN TRỌNG NGUYÊN</p>
+          <h2 class="hero-headline" id="headline">Blog</h2>
+          <p class="hero-sub" id="subtitle">Ghi chép về kỹ thuật dữ liệu, công nghệ và những bài học từ dự án thực tế.</p>
+        </header>
+        <section class="blog-feed" aria-labelledby="blog-feed-heading">
+          <div class="blog-section-heading">
+            <h2 id="blog-feed-heading">Bài viết mới nhất</h2>
+          </div>
+          <ul class="blog-posts">
+            <li>
+              <article>
+                <a class="blog-card" href="blog/data-pipeline-dau-tien.html">
+                  <div class="blog-cover" aria-hidden="true">
+                    <span class="blog-cover-index">01 / DATA ENGINEERING</span>
+                    <div class="blog-flow">
+                      <span>CSV</span><b>→</b><span>SQL</span><b>→</b><span>DB</span>
+                    </div>
+                    <span class="blog-cover-caption">EXTRACT / TRANSFORM / LOAD</span>
+                  </div>
+                  <div class="blog-card-copy">
+                    <p class="blog-meta"><span>Data Engineering</span><span>3 phút đọc</span></p>
+                    <h3>Thiết kế data pipeline đầu tiên</h3>
+                    <p class="blog-excerpt">Từ tệp CSV đến bảng báo cáo. Một ví dụ nhỏ về cách tổ chức các bước nạp dữ liệu, kiểm tra chất lượng và chạy lại an toàn.</p>
+                    <span class="blog-read">Đọc bài viết <span aria-hidden="true">↗</span></span>
+                  </div>
+                </a>
+              </article>
+            </li>
+          </ul>
+        </section>
       </div>
       <footer class="footer">&copy; 2026 phantrongnguyen</footer>
     </main>

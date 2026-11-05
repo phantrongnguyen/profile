@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Một ví dụ về thiết kế data pipeline từ CSV đến bảng báo cáo, kiểm tra chất lượng dữ liệu và chạy lại an toàn.">
+  <meta name="theme-color" content="#08090b">
+  <title>Thiết kế data pipeline đầu tiên | Phan Trọng Nguyên</title>
+  <link rel="icon" href="../../assets/images/letter-n.png">
+  <link rel="stylesheet" href="../../assets/css/shared/colors.css">
+  <link rel="stylesheet" href="../../assets/css/shared/style.css">
+  <link rel="stylesheet" href="../../assets/css/features/blogs.css">
+</head>
+<body>
+  <main class="blog-article">
+    <nav class="blog-breadcrumb" aria-label="Đường dẫn">
+      <a href="../../index.html">Portfolio</a><span aria-hidden="true">/</span>
+      <a href="../blogs.html">Blog</a><span aria-hidden="true">/</span>
+      <span aria-current="page">Bài viết</span>
+    </nav>
+    <article aria-labelledby="post-title">
+      <header class="blog-article-header">
+        <p class="blog-meta"><span>Data Engineering</span><span>3 phút đọc</span></p>
+        <h1 id="post-title">Thiết kế data pipeline đầu tiên</h1>
+        <p class="blog-article-intro">Một pipeline đơn giản có thể bắt đầu từ tệp CSV hằng ngày và kết thúc ở một bảng báo cáo có thể kiểm tra, truy vết và chạy lại.</p>
+      </header>
+      <div class="blog-article-grid">
+        <nav class="blog-toc" aria-labelledby="toc-title">
+          <h2 id="toc-title">Mục lục</h2>
+          <ol>
+            <li><a href="#luong-du-lieu">Vẽ luồng dữ liệu</a></li>
+            <li><a href="#kiem-tra">Kiểm tra trước khi nạp</a></li>
+            <li><a href="#chay-lai">Thiết kế để chạy lại</a></li>
+          </ol>
+        </nav>
+        <div class="blog-prose">
+          <section id="luong-du-lieu">
+            <h2>Vẽ luồng dữ liệu</h2>
+            <p>Giả sử mỗi sáng hệ thống bán hàng gửi một tệp CSV chứa các đơn đã thanh toán. Báo cáo cần biết số đơn và doanh thu theo ngày. Luồng đầu tiên chỉ cần ba bước.</p>
+            <ol>
+              <li><strong>Extract</strong> — Giữ bản gốc và ghi lại tên tệp cùng thời điểm nhận.</li>
+              <li><strong>Transform</strong> — Chuẩn hóa ngày, số tiền và mã đơn trong bảng trung gian.</li>
+              <li><strong>Load</strong> — Tổng hợp dữ liệu hợp lệ vào bảng báo cáo theo ngày.</li>
+            </ol>
+          </section>
+          <section id="kiem-tra">
+            <h2>Kiểm tra trước khi nạp</h2>
+            <p>Kiểm tra các cột bắt buộc, phát hiện mã đơn trùng và đối chiếu số bản ghi giữa đầu vào với bảng trung gian. Với dòng lỗi, hãy ghi lại nguyên nhân để có thể tra cứu và sửa dữ liệu nguồn.</p>
+            <p>Sau khi chuẩn hóa kiểu dữ liệu, truy vấn dưới đây tổng hợp các đơn trong một ngày báo cáo.</p>
+            <pre><code>SELECT
+  order_date,
+  COUNT(*) AS total_orders,
+  SUM(amount) AS total_revenue
+FROM staging_orders
+WHERE order_date = :report_date
+GROUP BY order_date;</code></pre>
+          </section>
+          <section id="chay-lai">
+            <h2>Thiết kế để chạy lại</h2>
+            <p>Dùng ngày báo cáo làm tham số chạy. Sau khi hoàn thành kiểm tra, thay dữ liệu của đúng ngày đó trong một giao dịch. Khi chạy lại với cùng đầu vào, bảng báo cáo sẽ cho cùng kết quả và số liệu sẽ không bị nhân đôi.</p>
+            <p>Ghi trạng thái chạy cùng số dòng nhận, số dòng hợp lệ và số dòng lỗi. Khi báo cáo có chênh lệch, bạn có thể lần ngược về đúng tệp đầu vào.</p>
+          </section>
+        </div>
+      </div>
+      <footer class="blog-article-footer"><a class="blog-read" href="../blogs.html">← Tất cả bài viết</a></footer>
+    </article>
+  </main>
+</body>
+</html>
