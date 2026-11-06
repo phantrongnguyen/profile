@@ -38,6 +38,31 @@
 .education-details dt { color: var(--text-dim); }
 .education-details dd { margin: 0; }
 .services-grid { margin-top: 24px; }
+.skills-section .section-title { white-space: normal; }
+.skills-section .console-key { font-weight: 400; }
+.skills-section > section + section { margin-top: var(--s-6); }
+.skill-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 96px), 96px));
+  gap: var(--s-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.service-card.skill-tile {
+  aspect-ratio: 1;
+  display: grid;
+  grid-template-rows: 36px 2lh;
+  align-content: center;
+  justify-items: center;
+  gap: var(--s-2);
+  padding: var(--s-2);
+  font-size: var(--fs-sm);
+  line-height: 1.2;
+  text-align: center;
+}
+.skill-tile img { object-fit: contain; }
+.skill-tile span { overflow-wrap: anywhere; }
 .hero-headline { overflow-wrap: anywhere; }
 
 /* White neon: soft edges, crisp text, brighter interactive states. */
@@ -136,11 +161,13 @@
 
 /* About design restored from codex/profile-about-refresh. */
 body[data-page="about"],
+body[data-page="skills"],
 body[data-page="education"] { --font-display: var(--font-mono); --font-body: var(--font-mono); --font-sans: var(--font-mono); }
 body[data-page="about"] .content-area { padding-top: 24px; }
 body[data-page="about"] .hero { padding-top: 0; }
 #about .service-card p { white-space: pre-line; }
 body[data-page="about"] .hero-headline,
+body[data-page="skills"] .hero-headline,
 body[data-page="education"] .hero-headline { font-size: clamp(1.75rem, 1.1rem + 2vw, 2.75rem); }
 body[data-page="about"] .hero-headline { white-space: pre-line; max-width: 18ch; }
 body[data-page="about"] .hero-sub { line-height: 1.8; }
@@ -158,5 +185,6 @@ body[data-page="about"] .hero-sub { line-height: 1.8; }
   #about .services-grid { grid-template-columns: minmax(0, 1fr); }
   #about .service-card { padding: 22px; }
   body[data-page="about"] .hero-headline,
+  body[data-page="skills"] .hero-headline,
   body[data-page="education"] .hero-headline { font-size: clamp(1.5rem, 5.5vw, 2rem); }
 }
