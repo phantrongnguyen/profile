@@ -30,7 +30,7 @@
         { title: "Project title", description: "Describe the problem, your contribution, and the outcome." }
       ] },
       { id: "skills", title: "SKILLS", introduction: "Share what you enjoy learning or creating.", cards: [] },
-      { id: "education", title: "EDUCATION", introduction: "Add awards or achievements here.", cards: [] }
+      { id: "education", title: "Education", headline: "Education", subtitle: "" }
     ]
   };
 

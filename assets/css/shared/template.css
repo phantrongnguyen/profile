@@ -30,6 +30,13 @@
 .service-card { display: block; }
 .service-card h3 { margin-bottom: 12px; }
 .service-card p, #profile-summary { color: var(--text-dim); }
+.education-card { display: flex; align-items: flex-start; gap: var(--s-4); }
+.education-card h3 { font-size: var(--fs-md); }
+.education-logo { flex-shrink: 0; border-radius: var(--r-md); }
+.education-details { display: grid; gap: var(--s-2); margin: 0; font-size: var(--fs-sm); }
+.education-details div { display: flex; flex-wrap: wrap; column-gap: var(--s-2); }
+.education-details dt { color: var(--text-dim); }
+.education-details dd { margin: 0; }
 .services-grid { margin-top: 24px; }
 .hero-headline { overflow-wrap: anywhere; }
 
@@ -128,11 +135,14 @@
 }
 
 /* About design restored from codex/profile-about-refresh. */
-body[data-page="about"] { --font-display: var(--font-mono); --font-body: var(--font-mono); --font-sans: var(--font-mono); }
+body[data-page="about"],
+body[data-page="education"] { --font-display: var(--font-mono); --font-body: var(--font-mono); --font-sans: var(--font-mono); }
 body[data-page="about"] .content-area { padding-top: 24px; }
 body[data-page="about"] .hero { padding-top: 0; }
 #about .service-card p { white-space: pre-line; }
-body[data-page="about"] .hero-headline { font-size: clamp(1.75rem, 1.1rem + 2vw, 2.75rem); white-space: pre-line; max-width: 18ch; }
+body[data-page="about"] .hero-headline,
+body[data-page="education"] .hero-headline { font-size: clamp(1.75rem, 1.1rem + 2vw, 2.75rem); }
+body[data-page="about"] .hero-headline { white-space: pre-line; max-width: 18ch; }
 body[data-page="about"] .hero-sub { line-height: 1.8; }
 #about .about-text { white-space: pre-line; color: var(--text-dim); font-size: 1.0625rem; line-height: 1.85; max-width: 78ch; }
 #about .section-title { font-size: clamp(1.35rem, 1rem + 1vw, 1.75rem); white-space: normal; }
@@ -147,5 +157,6 @@ body[data-page="about"] .hero-sub { line-height: 1.8; }
 @media (max-width: 560px) {
   #about .services-grid { grid-template-columns: minmax(0, 1fr); }
   #about .service-card { padding: 22px; }
-  body[data-page="about"] .hero-headline { font-size: clamp(1.5rem, 5.5vw, 2rem); }
+  body[data-page="about"] .hero-headline,
+  body[data-page="education"] .hero-headline { font-size: clamp(1.5rem, 5.5vw, 2rem); }
 }
