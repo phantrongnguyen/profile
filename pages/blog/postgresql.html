@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PostgreSQL là cơ sở dữ liệu quan hệ hỗ trợ truy vấn SQL, giao dịch và ràng buộc dữ liệu.">
+  <meta name="theme-color" content="#08090b">
+  <title>Nạp dữ liệu báo cáo vào PostgreSQL | Phan Trọng Nguyên</title>
+  <link rel="icon" href="../../assets/images/letter-n.png">
+  <link rel="stylesheet" href="../../assets/css/shared/colors.css">
+  <link rel="stylesheet" href="../../assets/css/shared/style.css">
+  <link rel="stylesheet" href="../../assets/css/features/blogs.css">
+</head>
+<body>
+  <main class="blog-article">
+    <nav class="blog-breadcrumb" aria-label="Đường dẫn">
+      <a href="../../index.html">Portfolio</a><span aria-hidden="true">/</span>
+      <a href="../blogs.html">Blog</a><span aria-hidden="true">/</span>
+      <span aria-current="page">PostgreSQL</span>
+    </nav>
+    <article aria-labelledby="post-title">
+      <header class="blog-article-header">
+        <p class="blog-meta"><span>Cơ sở dữ liệu</span></p>
+        <h1 id="post-title">Nạp dữ liệu báo cáo vào PostgreSQL</h1>
+        <p class="blog-article-intro">PostgreSQL là cơ sở dữ liệu quan hệ hỗ trợ truy vấn SQL, giao dịch và ràng buộc dữ liệu.</p>
+      </header>
+      <div class="blog-prose">
+        <section aria-labelledby="example">
+          <h2 id="example">Ví dụ trong kỹ thuật dữ liệu</h2>
+          <p>Nạp lô đơn hàng vào bảng staging, kiểm tra mã đơn và số lượng dòng, rồi dùng INSERT … ON CONFLICT để thêm hoặc cập nhật bảng đích theo khóa duy nhất.</p>
+        </section>
+        <section aria-labelledby="practice">
+          <h2 id="practice">Lưu ý khi triển khai</h2>
+          <p>Đưa các bước cập nhật liên quan vào một giao dịch để có thể hoàn tác khi có lỗi. Ghi nhận số dòng được nạp để so sánh với lô đầu vào.</p>
+        </section>
+      </div>
+      <footer class="blog-article-footer">
+        <a class="blog-read" href="../blogs.html#skill-posts">← Bài viết về kỹ năng</a>
+        <a class="blog-read" href="../skills.html">← Danh sách kỹ năng</a>
+      </footer>
+    </article>
+  </main>
+</body>
+</html>

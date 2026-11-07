@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Redis là kho dữ liệu trong bộ nhớ thường dùng cho bộ nhớ đệm và tra cứu theo khóa.">
+  <meta name="theme-color" content="#08090b">
+  <title>Giảm truy vấn lặp với Redis | Phan Trọng Nguyên</title>
+  <link rel="icon" href="../../assets/images/letter-n.png">
+  <link rel="stylesheet" href="../../assets/css/shared/colors.css">
+  <link rel="stylesheet" href="../../assets/css/shared/style.css">
+  <link rel="stylesheet" href="../../assets/css/features/blogs.css">
+</head>
+<body>
+  <main class="blog-article">
+    <nav class="blog-breadcrumb" aria-label="Đường dẫn">
+      <a href="../../index.html">Portfolio</a><span aria-hidden="true">/</span>
+      <a href="../blogs.html">Blog</a><span aria-hidden="true">/</span>
+      <span aria-current="page">Redis</span>
+    </nav>
+    <article aria-labelledby="post-title">
+      <header class="blog-article-header">
+        <p class="blog-meta"><span>Cơ sở dữ liệu</span></p>
+        <h1 id="post-title">Giảm truy vấn lặp với Redis</h1>
+        <p class="blog-article-intro">Redis là kho dữ liệu trong bộ nhớ thường dùng cho bộ nhớ đệm và tra cứu theo khóa.</p>
+      </header>
+      <div class="blog-prose">
+        <section aria-labelledby="example">
+          <h2 id="example">Ví dụ trong kỹ thuật dữ liệu</h2>
+          <p>Dịch vụ tiếp nhận sự kiện có thể lưu bảng ánh xạ mã vùng trong Redis. Khi khóa chưa tồn tại, dịch vụ đọc từ cơ sở dữ liệu nguồn rồi đưa kết quả vào bộ nhớ đệm.</p>
+        </section>
+        <section aria-labelledby="practice">
+          <h2 id="practice">Lưu ý khi triển khai</h2>
+          <p>Chọn thời gian hết hạn dựa trên mức độ thay đổi của dữ liệu. Khi bộ nhớ đệm không có giá trị, dịch vụ vẫn cần đường đọc từ nguồn chính.</p>
+        </section>
+      </div>
+      <footer class="blog-article-footer">
+        <a class="blog-read" href="../blogs.html#skill-posts">← Bài viết về kỹ năng</a>
+        <a class="blog-read" href="../skills.html">← Danh sách kỹ năng</a>
+      </footer>
+    </article>
+  </main>
+</body>
+</html>

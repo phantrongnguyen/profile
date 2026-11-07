@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Apache Kafka cho phép ứng dụng ghi sự kiện vào topic và các hệ thống downstream đọc theo tiến độ riêng.">
+  <meta name="theme-color" content="#08090b">
+  <title>Truyền sự kiện đơn hàng qua Apache Kafka | Phan Trọng Nguyên</title>
+  <link rel="icon" href="../../assets/images/letter-n.png">
+  <link rel="stylesheet" href="../../assets/css/shared/colors.css">
+  <link rel="stylesheet" href="../../assets/css/shared/style.css">
+  <link rel="stylesheet" href="../../assets/css/features/blogs.css">
+</head>
+<body>
+  <main class="blog-article">
+    <nav class="blog-breadcrumb" aria-label="Đường dẫn">
+      <a href="../../index.html">Portfolio</a><span aria-hidden="true">/</span>
+      <a href="../blogs.html">Blog</a><span aria-hidden="true">/</span>
+      <span aria-current="page">Apache Kafka</span>
+    </nav>
+    <article aria-labelledby="post-title">
+      <header class="blog-article-header">
+        <p class="blog-meta"><span>Hạ tầng dữ liệu</span></p>
+        <h1 id="post-title">Truyền sự kiện đơn hàng qua Apache Kafka</h1>
+        <p class="blog-article-intro">Apache Kafka cho phép ứng dụng ghi sự kiện vào topic và các hệ thống downstream đọc theo tiến độ riêng.</p>
+      </header>
+      <div class="blog-prose">
+        <section aria-labelledby="example">
+          <h2 id="example">Ví dụ trong kỹ thuật dữ liệu</h2>
+          <p>Ứng dụng bán hàng gửi sự kiện tạo đơn vào một topic. Một nhóm consumer cập nhật số liệu vận hành, còn nhóm khác lưu sự kiện để phân tích về sau.</p>
+        </section>
+        <section aria-labelledby="practice">
+          <h2 id="practice">Lưu ý khi triển khai</h2>
+          <p>Nếu cần giữ thứ tự sự kiện của từng đơn, dùng mã đơn làm khóa phân vùng. Chuẩn bị cách nhận diện sự kiện đã xử lý để tránh cập nhật hai lần khi đọc lại.</p>
+        </section>
+      </div>
+      <footer class="blog-article-footer">
+        <a class="blog-read" href="../blogs.html#skill-posts">← Bài viết về kỹ năng</a>
+        <a class="blog-read" href="../skills.html">← Danh sách kỹ năng</a>
+      </footer>
+    </article>
+  </main>
+</body>
+</html>

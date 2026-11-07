@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MinIO cung cấp lưu trữ đối tượng qua API tương thích với S3.">
+  <meta name="theme-color" content="#08090b">
+  <title>Tổ chức vùng lưu trữ dữ liệu với MinIO | Phan Trọng Nguyên</title>
+  <link rel="icon" href="../../assets/images/letter-n.png">
+  <link rel="stylesheet" href="../../assets/css/shared/colors.css">
+  <link rel="stylesheet" href="../../assets/css/shared/style.css">
+  <link rel="stylesheet" href="../../assets/css/features/blogs.css">
+</head>
+<body>
+  <main class="blog-article">
+    <nav class="blog-breadcrumb" aria-label="Đường dẫn">
+      <a href="../../index.html">Portfolio</a><span aria-hidden="true">/</span>
+      <a href="../blogs.html">Blog</a><span aria-hidden="true">/</span>
+      <span aria-current="page">MinIO</span>
+    </nav>
+    <article aria-labelledby="post-title">
+      <header class="blog-article-header">
+        <p class="blog-meta"><span>Hạ tầng dữ liệu</span></p>
+        <h1 id="post-title">Tổ chức vùng lưu trữ dữ liệu với MinIO</h1>
+        <p class="blog-article-intro">MinIO cung cấp lưu trữ đối tượng qua API tương thích với S3.</p>
+      </header>
+      <div class="blog-prose">
+        <section aria-labelledby="example">
+          <h2 id="example">Ví dụ trong kỹ thuật dữ liệu</h2>
+          <p>Có thể ghi tệp nguồn vào vùng raw theo nguồn và ngày, rồi ghi bảng Parquet đã làm sạch vào vùng processed. Cấu trúc đường dẫn giúp tìm đúng dữ liệu khi cần chạy lại một ngày cụ thể.</p>
+        </section>
+        <section aria-labelledby="practice">
+          <h2 id="practice">Lưu ý khi triển khai</h2>
+          <p>Định nghĩa quy ước tên tệp và quyền truy cập cho từng vùng. Giữ tệp nguồn đủ lâu để đối chiếu khi quy tắc xử lý thay đổi.</p>
+        </section>
+      </div>
+      <footer class="blog-article-footer">
+        <a class="blog-read" href="../blogs.html#skill-posts">← Bài viết về kỹ năng</a>
+        <a class="blog-read" href="../skills.html">← Danh sách kỹ năng</a>
+      </footer>
+    </article>
+  </main>
+</body>
+</html>
