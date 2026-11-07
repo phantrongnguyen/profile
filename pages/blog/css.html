@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CSS điều khiển bố cục, màu sắc và cách nội dung hiển thị trên các kích thước màn hình.">
+  <meta name="theme-color" content="#08090b">
+  <title>Bố trí dashboard thích ứng với CSS | Phan Trọng Nguyên</title>
+  <link rel="icon" href="../../assets/images/letter-n.png">
+  <link rel="stylesheet" href="../../assets/css/shared/colors.css">
+  <link rel="stylesheet" href="../../assets/css/shared/style.css">
+  <link rel="stylesheet" href="../../assets/css/features/blogs.css">
+</head>
+<body>
+  <main class="blog-article">
+    <nav class="blog-breadcrumb" aria-label="Đường dẫn">
+      <a href="../../index.html">Portfolio</a><span aria-hidden="true">/</span>
+      <a href="../blogs.html">Blog</a><span aria-hidden="true">/</span>
+      <span aria-current="page">CSS</span>
+    </nav>
+    <article aria-labelledby="post-title">
+      <header class="blog-article-header">
+        <p class="blog-meta"><span>Phát triển web</span></p>
+        <h1 id="post-title">Bố trí dashboard thích ứng với CSS</h1>
+        <p class="blog-article-intro">CSS điều khiển bố cục, màu sắc và cách nội dung hiển thị trên các kích thước màn hình.</p>
+      </header>
+      <div class="blog-prose">
+        <section aria-labelledby="example">
+          <h2 id="example">Ví dụ thực hành</h2>
+          <p>Dùng CSS Grid để đặt các thẻ chỉ số cạnh nhau trên màn hình rộng và tự xuống dòng khi màn hình hẹp. Cho phép bảng kết quả cuộn ngang trong vùng riêng khi cần.</p>
+        </section>
+        <section aria-labelledby="practice">
+          <h2 id="practice">Lưu ý khi triển khai</h2>
+          <p>Kiểm tra độ tương phản và trạng thái focus của các điều khiển. Thử với tên chỉ số dài để phát hiện trường hợp nội dung bị cắt.</p>
+        </section>
+      </div>
+      <footer class="blog-article-footer">
+        <a class="blog-read" href="../blogs.html#skill-posts">← Bài viết về kỹ năng</a>
+        <a class="blog-read" href="../skills.html">← Danh sách kỹ năng</a>
+      </footer>
+    </article>
+  </main>
+</body>
+</html>
