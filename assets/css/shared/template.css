@@ -61,7 +61,7 @@
   line-height: 1.2;
   text-align: center;
 }
-.skill-tile img { object-fit: contain; }
+.skill-tile img { align-self: center; object-fit: contain; }
 .skill-tile span { overflow-wrap: anywhere; }
 .hero-headline { overflow-wrap: anywhere; }
 
