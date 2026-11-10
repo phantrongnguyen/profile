@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Một ví dụ về thiết kế data pipeline từ CSV đến bảng báo cáo, kiểm tra chất lượng dữ liệu và chạy lại an toàn.">
-  <meta name="author" content="Phan Trọng Nguyên">
+  <meta name="description" content="A practical guide to designing a data pipeline from CSV to reporting tables, ensuring data quality checks and idempotent re-runs.">
+  <meta name="author" content="Phan Trong Nguyen">
   <meta name="theme-color" content="#08090b">
-  <title>Thiết kế data pipeline đầu tiên | Phan Trọng Nguyên</title>
+  <title>Designing Your First Data Pipeline | Phan Trong Nguyen</title>
   <link rel="icon" href="../../assets/images/letter-n.png">
   <link rel="stylesheet" href="../../assets/css/shared/colors.css">
   <link rel="stylesheet" href="../../assets/css/shared/style.css">
@@ -14,45 +14,45 @@
 </head>
 <body>
   <main class="blog-article">
-    <nav class="blog-breadcrumb" aria-label="Đường dẫn">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
       <a href="../../index.html">Portfolio</a><span aria-hidden="true">/</span>
       <a href="../blogs.html">Blog</a><span aria-hidden="true">/</span>
-      <span aria-current="page">Bài viết</span>
+      <span aria-current="page">Article</span>
     </nav>
     <article aria-labelledby="post-title">
       <header class="blog-article-header">
         <p class="blog-meta">
           <span>Data Engineering</span>
-          <span>Phan Trọng Nguyên</span>
-          <time datetime="2026-11-05">05/11/2026</time>
-          <span>3 phút đọc</span>
+          <span>Phan Trong Nguyen</span>
+          <time datetime="2026-11-05">11/05/2026</time>
+          <span>3 min read</span>
         </p>
-        <h1 id="post-title">Thiết kế data pipeline đầu tiên</h1>
-        <p class="blog-article-intro">Một pipeline đơn giản có thể bắt đầu từ tệp CSV hằng ngày và kết thúc ở một bảng báo cáo có thể kiểm tra, truy vết và chạy lại.</p>
+        <h1 id="post-title">Designing Your First Data Pipeline</h1>
+        <p class="blog-article-intro">A clean data pipeline can start with a daily CSV file and end at a verifiable, traceable, and re-runnable reporting table.</p>
       </header>
       <div class="blog-article-grid">
         <nav class="blog-toc" aria-labelledby="toc-title">
-          <h2 id="toc-title">Mục lục</h2>
+          <h2 id="toc-title">Table of Contents</h2>
           <ol>
-            <li><a href="#luong-du-lieu">Vẽ luồng dữ liệu</a></li>
-            <li><a href="#kiem-tra">Kiểm tra trước khi nạp</a></li>
-            <li><a href="#chay-lai">Thiết kế để chạy lại</a></li>
+            <li><a href="#luong-du-lieu">Mapping the Data Flow</a></li>
+            <li><a href="#kiem-tra">Validation Before Ingestion</a></li>
+            <li><a href="#chay-lai">Designing for Re-runs</a></li>
           </ol>
         </nav>
         <div class="blog-prose">
           <section id="luong-du-lieu">
-            <h2>Vẽ luồng dữ liệu</h2>
-            <p>Giả sử mỗi sáng hệ thống bán hàng gửi một tệp CSV chứa các đơn đã thanh toán. Báo cáo cần biết số đơn và doanh thu theo ngày. Luồng đầu tiên chỉ cần ba bước.</p>
+            <h2>Mapping the Data Flow</h2>
+            <p>Suppose an e-commerce platform generates a daily CSV file containing paid orders each morning. The business report requires daily order counts and revenue. The initial flow requires three distinct steps:</p>
             <ol>
-              <li><strong>Extract</strong> — Giữ bản gốc và ghi lại tên tệp cùng thời điểm nhận.</li>
-              <li><strong>Transform</strong> — Chuẩn hóa ngày, số tiền và mã đơn trong bảng trung gian.</li>
-              <li><strong>Load</strong> — Tổng hợp dữ liệu hợp lệ vào bảng báo cáo theo ngày.</li>
+              <li><strong>Extract</strong> — Store the raw source file, recording file name, checksum, and arrival timestamp.</li>
+              <li><strong>Transform</strong> — Parse and normalize timestamps, currency amounts, and order identifiers into an intermediate staging table.</li>
+              <li><strong>Load</strong> — Aggregate validated records into the daily reporting table.</li>
             </ol>
           </section>
           <section id="kiem-tra">
-            <h2>Kiểm tra trước khi nạp</h2>
-            <p>Kiểm tra các cột bắt buộc, phát hiện mã đơn trùng và đối chiếu số bản ghi giữa đầu vào với bảng trung gian. Với dòng lỗi, hãy ghi lại nguyên nhân để có thể tra cứu và sửa dữ liệu nguồn.</p>
-            <p>Sau khi chuẩn hóa kiểu dữ liệu, truy vấn dưới đây tổng hợp các đơn trong một ngày báo cáo.</p>
+            <h2>Validation Before Ingestion</h2>
+            <p>Verify required columns, detect duplicate order IDs, and reconcile record counts between the input file and the staging table. For invalid rows, log error reasons into a dead-letter sink to facilitate source auditing and manual correction.</p>
+            <p>After standardizing data types, the query below aggregates orders for a given reporting date:</p>
             <pre><code>SELECT
   order_date,
   COUNT(*) AS total_orders,
@@ -62,13 +62,13 @@ WHERE order_date = :report_date
 GROUP BY order_date;</code></pre>
           </section>
           <section id="chay-lai">
-            <h2>Thiết kế để chạy lại</h2>
-            <p>Dùng ngày báo cáo làm tham số chạy. Sau khi hoàn thành kiểm tra, thay dữ liệu của đúng ngày đó trong một giao dịch. Khi chạy lại với cùng đầu vào, bảng báo cáo sẽ cho cùng kết quả và số liệu sẽ không bị nhân đôi.</p>
-            <p>Ghi trạng thái chạy cùng số dòng nhận, số dòng hợp lệ và số dòng lỗi. Khi báo cáo có chênh lệch, bạn có thể lần ngược về đúng tệp đầu vào.</p>
+            <h2>Designing for Re-runs</h2>
+            <p>Use the reporting date as an execution parameter. After validation succeeds, replace that specific date's partition within a single transaction. Re-running the pipeline with identical input produces the exact same results without duplicating metrics.</p>
+            <p>Log execution statuses alongside received, valid, and rejected record counts. When numbers diverge, you can trace discrepancies directly back to the original source file.</p>
           </section>
         </div>
       </div>
-      <footer class="blog-article-footer"><a class="blog-read" href="../blogs.html">← Tất cả bài viết</a></footer>
+      <footer class="blog-article-footer"><a class="blog-read" href="../blogs.html">← All articles</a></footer>
     </article>
   </main>
 </body>

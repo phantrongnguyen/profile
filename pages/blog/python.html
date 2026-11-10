@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Python có thể kết nối nguồn dữ liệu, kiểm tra bản ghi và tự động hóa các bước trong pipeline.">
+  <meta name="description" content="Python connects diverse data sources, validates records, and coordinates end-to-end pipeline automation.">
   <meta name="theme-color" content="#08090b">
-  <title>Dùng Python để lấy dữ liệu từ API | Phan Trọng Nguyên</title>
+  <title>Fetching Data from APIs with Python | Phan Trong Nguyen</title>
   <link rel="icon" href="../../assets/images/letter-n.png">
   <link rel="stylesheet" href="../../assets/css/shared/colors.css">
   <link rel="stylesheet" href="../../assets/css/shared/style.css">
@@ -13,30 +13,30 @@
 </head>
 <body>
   <main class="blog-article">
-    <nav class="blog-breadcrumb" aria-label="Đường dẫn">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
       <a href="../../index.html">Portfolio</a><span aria-hidden="true">/</span>
       <a href="../blogs.html">Blog</a><span aria-hidden="true">/</span>
       <span aria-current="page">Python</span>
     </nav>
     <article aria-labelledby="post-title">
       <header class="blog-article-header">
-        <p class="blog-meta"><span>Lập trình</span></p>
-        <h1 id="post-title">Dùng Python để lấy dữ liệu từ API</h1>
-        <p class="blog-article-intro">Python có thể kết nối nguồn dữ liệu, kiểm tra bản ghi và tự động hóa các bước trong pipeline.</p>
+        <p class="blog-meta"><span>Programming</span></p>
+        <h1 id="post-title">Fetching Data from APIs with Python</h1>
+        <p class="blog-article-intro">Python connects diverse data sources, validates records, and coordinates end-to-end pipeline automation.</p>
       </header>
       <div class="blog-prose">
         <section aria-labelledby="example">
-          <h2 id="example">Ví dụ trong kỹ thuật dữ liệu</h2>
-          <p>Một tác vụ hằng ngày gọi API theo từng trang, kiểm tra các trường bắt buộc rồi lưu dữ liệu gốc trước khi chuẩn hóa. Tách bước tải và bước xử lý giúp chạy lại phần chuẩn hóa từ dữ liệu đã lưu.</p>
+          <h2 id="example">Data Engineering Example</h2>
+          <p>A scheduled job paginates through REST APIs, validates required fields, and persists raw JSON payloads before running transformations, allowing re-runs without hitting external APIs again.</p>
         </section>
         <section aria-labelledby="practice">
-          <h2 id="practice">Lưu ý khi triển khai</h2>
-          <p>Đặt thời gian chờ cho mỗi yêu cầu và ghi lại trang đã tải thành công. Khi chạy lại, dùng mã bản ghi hoặc khóa đầu ra cố định để tránh ghi trùng.</p>
+          <h2 id="practice">Implementation Notes</h2>
+          <p>Set explicit request timeouts, implement exponential backoff on retries, and track pagination checkpoints. Use deterministic record IDs to guarantee idempotent writes.</p>
         </section>
       </div>
       <footer class="blog-article-footer">
-        <a class="blog-read" href="../blogs.html#skill-posts">← Bài viết về kỹ năng</a>
-        <a class="blog-read" href="../skills.html">← Danh sách kỹ năng</a>
+        <a class="blog-read" href="../blogs.html#skill-posts">← Skill articles</a>
+        <a class="blog-read" href="../skills.html">← All skills</a>
       </footer>
     </article>
   </main>

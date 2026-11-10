@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Apache Airflow lập lịch và theo dõi các tác vụ có quan hệ phụ thuộc trong một workflow.">
+  <meta name="description" content="Apache Airflow schedules and monitors tasks with dependency graphs across workflow pipelines.">
   <meta name="theme-color" content="#08090b">
-  <title>Điều phối pipeline hằng ngày bằng Apache Airflow | Phan Trọng Nguyên</title>
+  <title>Orchestrating Daily Pipelines with Apache Airflow | Phan Trong Nguyen</title>
   <link rel="icon" href="../../assets/images/letter-n.png">
   <link rel="stylesheet" href="../../assets/css/shared/colors.css">
   <link rel="stylesheet" href="../../assets/css/shared/style.css">
@@ -13,30 +13,30 @@
 </head>
 <body>
   <main class="blog-article">
-    <nav class="blog-breadcrumb" aria-label="Đường dẫn">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
       <a href="../../index.html">Portfolio</a><span aria-hidden="true">/</span>
       <a href="../blogs.html">Blog</a><span aria-hidden="true">/</span>
       <span aria-current="page">Apache Airflow</span>
     </nav>
     <article aria-labelledby="post-title">
       <header class="blog-article-header">
-        <p class="blog-meta"><span>Hạ tầng dữ liệu</span></p>
-        <h1 id="post-title">Điều phối pipeline hằng ngày bằng Apache Airflow</h1>
-        <p class="blog-article-intro">Apache Airflow lập lịch và theo dõi các tác vụ có quan hệ phụ thuộc trong một workflow.</p>
+        <p class="blog-meta"><span>Data Infrastructure</span></p>
+        <h1 id="post-title">Orchestrating Daily Pipelines with Apache Airflow</h1>
+        <p class="blog-article-intro">Apache Airflow schedules and monitors tasks with dependency graphs across workflow pipelines.</p>
       </header>
       <div class="blog-prose">
         <section aria-labelledby="example">
-          <h2 id="example">Ví dụ trong kỹ thuật dữ liệu</h2>
-          <p>Tổ chức pipeline thành ba bước lấy dữ liệu, kiểm tra chất lượng và nạp báo cáo. Bước nạp chỉ bắt đầu khi dữ liệu của lần chạy đó vượt qua kiểm tra.</p>
+          <h2 id="example">Data Engineering Example</h2>
+          <p>Structure the pipeline into three distinct tasks: extraction, quality validation, and reporting load. The load task only triggers once that day's data passes all validation rules.</p>
         </section>
         <section aria-labelledby="practice">
-          <h2 id="practice">Lưu ý khi triển khai</h2>
-          <p>Dùng ngày dữ liệu của lần chạy để xác định đầu vào và đầu ra. Khi một tác vụ được thử lại, cùng ngày dữ liệu nên cho ra cùng kết quả mà không nhân đôi bản ghi.</p>
+          <h2 id="practice">Implementation Notes</h2>
+          <p>Use execution dates (logical dates) to define inputs and outputs. When a task retries, the same execution date should yield the same output without creating duplicate records.</p>
         </section>
       </div>
       <footer class="blog-article-footer">
-        <a class="blog-read" href="../blogs.html#skill-posts">← Bài viết về kỹ năng</a>
-        <a class="blog-read" href="../skills.html">← Danh sách kỹ năng</a>
+        <a class="blog-read" href="../blogs.html#skill-posts">← Skill articles</a>
+        <a class="blog-read" href="../skills.html">← All skills</a>
       </footer>
     </article>
   </main>

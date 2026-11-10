@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="pandas biểu diễn dữ liệu dạng bảng bằng DataFrame và cung cấp các thao tác lọc, ghép và biến đổi cột.">
+  <meta name="description" content="pandas represents tabular data with DataFrames, offering powerful filtering, merging, and column transformation methods.">
   <meta name="theme-color" content="#08090b">
-  <title>Làm sạch tệp CSV bằng pandas | Phan Trọng Nguyên</title>
+  <title>Cleaning CSV Datasets with pandas | Phan Trong Nguyen</title>
   <link rel="icon" href="../../assets/images/letter-n.png">
   <link rel="stylesheet" href="../../assets/css/shared/colors.css">
   <link rel="stylesheet" href="../../assets/css/shared/style.css">
@@ -13,30 +13,30 @@
 </head>
 <body>
   <main class="blog-article">
-    <nav class="blog-breadcrumb" aria-label="Đường dẫn">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
       <a href="../../index.html">Portfolio</a><span aria-hidden="true">/</span>
       <a href="../blogs.html">Blog</a><span aria-hidden="true">/</span>
       <span aria-current="page">pandas</span>
     </nav>
     <article aria-labelledby="post-title">
       <header class="blog-article-header">
-        <p class="blog-meta"><span>Xử lý dữ liệu</span></p>
-        <h1 id="post-title">Làm sạch tệp CSV bằng pandas</h1>
-        <p class="blog-article-intro">pandas biểu diễn dữ liệu dạng bảng bằng DataFrame và cung cấp các thao tác lọc, ghép và biến đổi cột.</p>
+        <p class="blog-meta"><span>Data Processing</span></p>
+        <h1 id="post-title">Cleaning CSV Datasets with pandas</h1>
+        <p class="blog-article-intro">pandas represents tabular data with DataFrames, offering powerful filtering, merging, and column transformation methods.</p>
       </header>
       <div class="blog-prose">
         <section aria-labelledby="example">
-          <h2 id="example">Ví dụ trong kỹ thuật dữ liệu</h2>
-          <p>Khi nhận tệp CSV đơn hàng, đọc mã đơn dưới dạng chuỗi để giữ số 0 ở đầu, chuẩn hóa cột ngày, kiểm tra giá trị thiếu rồi xuất các dòng hợp lệ.</p>
+          <h2 id="example">Data Engineering Example</h2>
+          <p>When ingesting order CSVs, cast identifier columns to strings to preserve leading zeros, parse dates into standard ISO formats, validate null constraints, and filter clean rows for loading.</p>
         </section>
         <section aria-labelledby="practice">
-          <h2 id="practice">Lưu ý khi triển khai</h2>
-          <p>Xác định cột nào tạo thành khóa trước khi loại trùng. Tách dòng lỗi để có thể đối chiếu với dữ liệu gốc sau khi xử lý.</p>
+          <h2 id="practice">Implementation Notes</h2>
+          <p>Explicitly define unique key columns before invoking deduplication methods. Segregate rejected records into an error DataFrame for reconciliation against raw inputs.</p>
         </section>
       </div>
       <footer class="blog-article-footer">
-        <a class="blog-read" href="../blogs.html#skill-posts">← Bài viết về kỹ năng</a>
-        <a class="blog-read" href="../skills.html">← Danh sách kỹ năng</a>
+        <a class="blog-read" href="../blogs.html#skill-posts">← Skill articles</a>
+        <a class="blog-read" href="../skills.html">← All skills</a>
       </footer>
     </article>
   </main>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="GitLab kết hợp kho Git, quy trình xem xét mã và pipeline CI/CD.">
+  <meta name="description" content="GitLab integrates Git repositories, code review workflows, and automated CI/CD pipelines.">
   <meta name="theme-color" content="#08090b">
-  <title>Kiểm tra thay đổi pipeline bằng GitLab CI | Phan Trọng Nguyên</title>
+  <title>Validating Pipeline Changes with GitLab CI | Phan Trong Nguyen</title>
   <link rel="icon" href="../../assets/images/letter-n.png">
   <link rel="stylesheet" href="../../assets/css/shared/colors.css">
   <link rel="stylesheet" href="../../assets/css/shared/style.css">
@@ -13,30 +13,30 @@
 </head>
 <body>
   <main class="blog-article">
-    <nav class="blog-breadcrumb" aria-label="Đường dẫn">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
       <a href="../../index.html">Portfolio</a><span aria-hidden="true">/</span>
       <a href="../blogs.html">Blog</a><span aria-hidden="true">/</span>
-      <span aria-current="page">GitLab</span>
+      <span aria-current="page">GitLab CI</span>
     </nav>
     <article aria-labelledby="post-title">
       <header class="blog-article-header">
         <p class="blog-meta"><span>DevOps</span></p>
-        <h1 id="post-title">Kiểm tra thay đổi pipeline bằng GitLab CI</h1>
-        <p class="blog-article-intro">GitLab kết hợp kho Git, quy trình xem xét mã và pipeline CI/CD.</p>
+        <h1 id="post-title">Validating Pipeline Changes with GitLab CI</h1>
+        <p class="blog-article-intro">GitLab integrates Git repositories, code review workflows, and automated CI/CD pipelines.</p>
       </header>
       <div class="blog-prose">
         <section aria-labelledby="example">
-          <h2 id="example">Ví dụ trong kỹ thuật dữ liệu</h2>
-          <p>Khi có merge request sửa pipeline, GitLab CI có thể chạy kiểm tra Python, xác thực SQL và dựng container image nếu các bước kiểm tra thành công.</p>
+          <h2 id="example">Data Engineering Example</h2>
+          <p>On merge requests modifying data pipelines, GitLab CI triggers linting, executes SQL validation scripts, and builds container images upon test completion.</p>
         </section>
         <section aria-labelledby="practice">
-          <h2 id="practice">Lưu ý khi triển khai</h2>
-          <p>Dùng dữ liệu mẫu nhỏ và có kết quả kỳ vọng rõ ràng để phát hiện thay đổi ngoài ý muốn. Giữ thông tin xác thực trong cấu hình CI phù hợp với môi trường chạy.</p>
+          <h2 id="practice">Implementation Notes</h2>
+          <p>Use isolated mock test datasets with clear expected outputs to catch regression bugs. Store production access tokens exclusively in protected CI variables scoped to deployment environments.</p>
         </section>
       </div>
       <footer class="blog-article-footer">
-        <a class="blog-read" href="../blogs.html#skill-posts">← Bài viết về kỹ năng</a>
-        <a class="blog-read" href="../skills.html">← Danh sách kỹ năng</a>
+        <a class="blog-read" href="../blogs.html#skill-posts">← Skill articles</a>
+        <a class="blog-read" href="../skills.html">← All skills</a>
       </footer>
     </article>
   </main>

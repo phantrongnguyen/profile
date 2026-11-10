@@ -1,7 +1,7 @@
 // Text-only rendering: content is never interpreted as HTML.
 (() => {
   const content = {
-    name: "Phan Trọng Nguyên",
+    name: "Phan Trong Nguyen",
     title: "Data Engineer",
     links: {
       facebook: "https://www.facebook.com/nguyen.phan.892024/",
@@ -22,8 +22,8 @@
         { title: "Data Integration", description: "Practical experience integrating data from multiple sources into data processing workflows.", symbol: "02" },
         { title: "Data Processing", description: "Experience developing workflows that prepare and process data for downstream use.", symbol: "03" }
       ] },
-      { id: "experience", title: "Experience", headline: "Experience", subtitle: "Quá trình làm việc, thực tập và phát triển hệ thống dữ liệu thực tế." },
-      { id: "blogs", title: "Blog", headline: "ls blogs", subtitle: "Ghi chép về kỹ thuật dữ liệu, công nghệ và những bài học từ dự án thực tế." },
+      { id: "experience", title: "Experience", headline: "Experience", subtitle: "Work experience, internships, and building real-world data systems." },
+      { id: "blogs", title: "Blog", headline: "ls blogs", subtitle: "Technical notes on data engineering, technology, and lessons from real-world projects." },
       { id: "projects", title: "PROJECTS", introduction: "Add projects you want to showcase.", cards: [
         { title: "Project title", description: "Describe the problem, your contribution, and the outcome." }
       ] },
@@ -48,7 +48,7 @@
     } else {
       link.removeAttribute('href');
       link.setAttribute('aria-disabled', 'true');
-      link.title = `${link.getAttribute('aria-label')}: chưa cập nhật liên kết`;
+      link.title = `${link.getAttribute('aria-label')}: link not updated`;
     }
   });
   setText('headline', content.headline);

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Apache Spark chia công việc xử lý dữ liệu thành các tác vụ có thể chạy song song.">
+  <meta name="description" content="Apache Spark partitions data processing workloads into distributed tasks that execute in parallel.">
   <meta name="theme-color" content="#08090b">
-  <title>Xử lý nhật ký lớn với Apache Spark | Phan Trọng Nguyên</title>
+  <title>Large-Scale Log Processing with Apache Spark | Phan Trong Nguyen</title>
   <link rel="icon" href="../../assets/images/letter-n.png">
   <link rel="stylesheet" href="../../assets/css/shared/colors.css">
   <link rel="stylesheet" href="../../assets/css/shared/style.css">
@@ -13,30 +13,30 @@
 </head>
 <body>
   <main class="blog-article">
-    <nav class="blog-breadcrumb" aria-label="Đường dẫn">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
       <a href="../../index.html">Portfolio</a><span aria-hidden="true">/</span>
       <a href="../blogs.html">Blog</a><span aria-hidden="true">/</span>
       <span aria-current="page">Apache Spark</span>
     </nav>
     <article aria-labelledby="post-title">
       <header class="blog-article-header">
-        <p class="blog-meta"><span>Xử lý dữ liệu</span></p>
-        <h1 id="post-title">Xử lý nhật ký lớn với Apache Spark</h1>
-        <p class="blog-article-intro">Apache Spark chia công việc xử lý dữ liệu thành các tác vụ có thể chạy song song.</p>
+        <p class="blog-meta"><span>Data Processing</span></p>
+        <h1 id="post-title">Large-Scale Log Processing with Apache Spark</h1>
+        <p class="blog-article-intro">Apache Spark partitions data processing workloads into distributed tasks that execute in parallel.</p>
       </header>
       <div class="blog-prose">
         <section aria-labelledby="example">
-          <h2 id="example">Ví dụ trong kỹ thuật dữ liệu</h2>
-          <p>Một job có thể đọc nhật ký từ nhiều tệp Parquet, lọc sự kiện hợp lệ, tổng hợp theo ngày và ghi kết quả theo phân vùng ngày để truy vấn lại.</p>
+          <h2 id="example">Data Engineering Example</h2>
+          <p>A Spark job reads event logs from hundreds of Parquet files, filters valid records, computes daily aggregates, and writes partitioned results by date for fast analytical queries.</p>
         </section>
         <section aria-labelledby="practice">
-          <h2 id="practice">Lưu ý khi triển khai</h2>
-          <p>Chọn cột phân vùng theo cách dữ liệu được truy vấn. Phân vùng quá chi tiết dễ tạo nhiều tệp nhỏ, làm tăng thời gian liệt kê và mở tệp.</p>
+          <h2 id="practice">Implementation Notes</h2>
+          <p>Choose partition columns based on common query filter patterns. Over-partitioning creates small files that degrade filesystem listing and read performance.</p>
         </section>
       </div>
       <footer class="blog-article-footer">
-        <a class="blog-read" href="../blogs.html#skill-posts">← Bài viết về kỹ năng</a>
-        <a class="blog-read" href="../skills.html">← Danh sách kỹ năng</a>
+        <a class="blog-read" href="../blogs.html#skill-posts">← Skill articles</a>
+        <a class="blog-read" href="../skills.html">← All skills</a>
       </footer>
     </article>
   </main>

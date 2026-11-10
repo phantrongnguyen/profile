@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Apache Kafka cho phép ứng dụng ghi sự kiện vào topic và các hệ thống downstream đọc theo tiến độ riêng.">
+  <meta name="description" content="Apache Kafka enables applications to publish events to topics while downstream systems consume them at their own pace.">
   <meta name="theme-color" content="#08090b">
-  <title>Truyền sự kiện đơn hàng qua Apache Kafka | Phan Trọng Nguyên</title>
+  <title>Streaming Order Events with Apache Kafka | Phan Trong Nguyen</title>
   <link rel="icon" href="../../assets/images/letter-n.png">
   <link rel="stylesheet" href="../../assets/css/shared/colors.css">
   <link rel="stylesheet" href="../../assets/css/shared/style.css">
@@ -13,30 +13,30 @@
 </head>
 <body>
   <main class="blog-article">
-    <nav class="blog-breadcrumb" aria-label="Đường dẫn">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
       <a href="../../index.html">Portfolio</a><span aria-hidden="true">/</span>
       <a href="../blogs.html">Blog</a><span aria-hidden="true">/</span>
       <span aria-current="page">Apache Kafka</span>
     </nav>
     <article aria-labelledby="post-title">
       <header class="blog-article-header">
-        <p class="blog-meta"><span>Hạ tầng dữ liệu</span></p>
-        <h1 id="post-title">Truyền sự kiện đơn hàng qua Apache Kafka</h1>
-        <p class="blog-article-intro">Apache Kafka cho phép ứng dụng ghi sự kiện vào topic và các hệ thống downstream đọc theo tiến độ riêng.</p>
+        <p class="blog-meta"><span>Data Infrastructure</span></p>
+        <h1 id="post-title">Streaming Order Events with Apache Kafka</h1>
+        <p class="blog-article-intro">Apache Kafka enables applications to publish events to topics while downstream systems consume them at their own pace.</p>
       </header>
       <div class="blog-prose">
         <section aria-labelledby="example">
-          <h2 id="example">Ví dụ trong kỹ thuật dữ liệu</h2>
-          <p>Ứng dụng bán hàng gửi sự kiện tạo đơn vào một topic. Một nhóm consumer cập nhật số liệu vận hành, còn nhóm khác lưu sự kiện để phân tích về sau.</p>
+          <h2 id="example">Data Engineering Example</h2>
+          <p>An e-commerce service publishes order creation events to a topic. One consumer group updates real-time operational metrics, while another stores events into object storage for analytical batch processing.</p>
         </section>
         <section aria-labelledby="practice">
-          <h2 id="practice">Lưu ý khi triển khai</h2>
-          <p>Nếu cần giữ thứ tự sự kiện của từng đơn, dùng mã đơn làm khóa phân vùng. Chuẩn bị cách nhận diện sự kiện đã xử lý để tránh cập nhật hai lần khi đọc lại.</p>
+          <h2 id="practice">Implementation Notes</h2>
+          <p>If order event sequence matters, use the order ID as the partition key. Implement idempotent consumers or deduplication checks to prevent double-processing during re-delivery.</p>
         </section>
       </div>
       <footer class="blog-article-footer">
-        <a class="blog-read" href="../blogs.html#skill-posts">← Bài viết về kỹ năng</a>
-        <a class="blog-read" href="../skills.html">← Danh sách kỹ năng</a>
+        <a class="blog-read" href="../blogs.html#skill-posts">← Skill articles</a>
+        <a class="blog-read" href="../skills.html">← All skills</a>
       </footer>
     </article>
   </main>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="PostgreSQL là cơ sở dữ liệu quan hệ hỗ trợ truy vấn SQL, giao dịch và ràng buộc dữ liệu.">
+  <meta name="description" content="PostgreSQL is an advanced relational database supporting ACID transactions, complex SQL queries, and robust schema constraints.">
   <meta name="theme-color" content="#08090b">
-  <title>Nạp dữ liệu báo cáo vào PostgreSQL | Phan Trọng Nguyên</title>
+  <title>Loading Report Data into PostgreSQL | Phan Trong Nguyen</title>
   <link rel="icon" href="../../assets/images/letter-n.png">
   <link rel="stylesheet" href="../../assets/css/shared/colors.css">
   <link rel="stylesheet" href="../../assets/css/shared/style.css">
@@ -13,30 +13,30 @@
 </head>
 <body>
   <main class="blog-article">
-    <nav class="blog-breadcrumb" aria-label="Đường dẫn">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
       <a href="../../index.html">Portfolio</a><span aria-hidden="true">/</span>
       <a href="../blogs.html">Blog</a><span aria-hidden="true">/</span>
       <span aria-current="page">PostgreSQL</span>
     </nav>
     <article aria-labelledby="post-title">
       <header class="blog-article-header">
-        <p class="blog-meta"><span>Cơ sở dữ liệu</span></p>
-        <h1 id="post-title">Nạp dữ liệu báo cáo vào PostgreSQL</h1>
-        <p class="blog-article-intro">PostgreSQL là cơ sở dữ liệu quan hệ hỗ trợ truy vấn SQL, giao dịch và ràng buộc dữ liệu.</p>
+        <p class="blog-meta"><span>Databases</span></p>
+        <h1 id="post-title">Loading Report Data into PostgreSQL</h1>
+        <p class="blog-article-intro">PostgreSQL is an advanced relational database supporting ACID transactions, complex SQL queries, and robust schema constraints.</p>
       </header>
       <div class="blog-prose">
         <section aria-labelledby="example">
-          <h2 id="example">Ví dụ trong kỹ thuật dữ liệu</h2>
-          <p>Nạp lô đơn hàng vào bảng staging, kiểm tra mã đơn và số lượng dòng, rồi dùng INSERT … ON CONFLICT để thêm hoặc cập nhật bảng đích theo khóa duy nhất.</p>
+          <h2 id="example">Data Engineering Example</h2>
+          <p>Load order batches into a staging table, validate counts and constraints, and execute INSERT … ON CONFLICT statements to upsert target analytical tables idempotently.</p>
         </section>
         <section aria-labelledby="practice">
-          <h2 id="practice">Lưu ý khi triển khai</h2>
-          <p>Đưa các bước cập nhật liên quan vào một giao dịch để có thể hoàn tác khi có lỗi. Ghi nhận số dòng được nạp để so sánh với lô đầu vào.</p>
+          <h2 id="practice">Implementation Notes</h2>
+          <p>Wrap related update statements in a database transaction to allow atomic rollback on failures. Log written row counts to reconcile against source batch totals.</p>
         </section>
       </div>
       <footer class="blog-article-footer">
-        <a class="blog-read" href="../blogs.html#skill-posts">← Bài viết về kỹ năng</a>
-        <a class="blog-read" href="../skills.html">← Danh sách kỹ năng</a>
+        <a class="blog-read" href="../blogs.html#skill-posts">← Skill articles</a>
+        <a class="blog-read" href="../skills.html">← All skills</a>
       </footer>
     </article>
   </main>

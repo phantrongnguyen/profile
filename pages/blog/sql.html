@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="SQL dùng để lọc, kết hợp và tổng hợp dữ liệu có cấu trúc ngay trong cơ sở dữ liệu.">
+  <meta name="description" content="SQL filters, joins, and aggregates relational structured data directly within analytical databases.">
   <meta name="theme-color" content="#08090b">
-  <title>Tổng hợp doanh thu bằng SQL | Phan Trọng Nguyên</title>
+  <title>Revenue Aggregation with SQL | Phan Trong Nguyen</title>
   <link rel="icon" href="../../assets/images/letter-n.png">
   <link rel="stylesheet" href="../../assets/css/shared/colors.css">
   <link rel="stylesheet" href="../../assets/css/shared/style.css">
@@ -13,30 +13,30 @@
 </head>
 <body>
   <main class="blog-article">
-    <nav class="blog-breadcrumb" aria-label="Đường dẫn">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
       <a href="../../index.html">Portfolio</a><span aria-hidden="true">/</span>
       <a href="../blogs.html">Blog</a><span aria-hidden="true">/</span>
       <span aria-current="page">SQL</span>
     </nav>
     <article aria-labelledby="post-title">
       <header class="blog-article-header">
-        <p class="blog-meta"><span>Lập trình</span></p>
-        <h1 id="post-title">Tổng hợp doanh thu bằng SQL</h1>
-        <p class="blog-article-intro">SQL dùng để lọc, kết hợp và tổng hợp dữ liệu có cấu trúc ngay trong cơ sở dữ liệu.</p>
+        <p class="blog-meta"><span>Programming</span></p>
+        <h1 id="post-title">Revenue Aggregation with SQL</h1>
+        <p class="blog-article-intro">SQL filters, joins, and aggregates relational structured data directly within analytical databases.</p>
       </header>
       <div class="blog-prose">
         <section aria-labelledby="example">
-          <h2 id="example">Ví dụ trong kỹ thuật dữ liệu</h2>
-          <p>Để lập báo cáo theo ngày, kết hợp bảng đơn hàng với bảng khách hàng theo mã khách, rồi dùng GROUP BY trên ngày đặt hàng và nhóm khách hàng. Kiểm tra số dòng trước và sau phép nối để phát hiện bản ghi bị nhân lên.</p>
+          <h2 id="example">Data Engineering Example</h2>
+          <p>Join orders with customer profiles on customer IDs, then execute GROUP BY on order dates and customer segments to compute daily revenue metrics, verifying row counts before and after the join.</p>
         </section>
         <section aria-labelledby="practice">
-          <h2 id="practice">Lưu ý khi triển khai</h2>
-          <p>Thống nhất múi giờ và quy tắc tính doanh thu trước khi tổng hợp. Nếu báo cáo loại trừ đơn hủy hoặc hoàn tiền, thể hiện quy tắc đó trong truy vấn.</p>
+          <h2 id="practice">Implementation Notes</h2>
+          <p>Standardize timezone offsets and revenue inclusion rules prior to aggregation. Ensure canceled or refunded orders are explicitly filtered according to business definitions.</p>
         </section>
       </div>
       <footer class="blog-article-footer">
-        <a class="blog-read" href="../blogs.html#skill-posts">← Bài viết về kỹ năng</a>
-        <a class="blog-read" href="../skills.html">← Danh sách kỹ năng</a>
+        <a class="blog-read" href="../blogs.html#skill-posts">← Skill articles</a>
+        <a class="blog-read" href="../skills.html">← All skills</a>
       </footer>
     </article>
   </main>

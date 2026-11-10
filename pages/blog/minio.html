@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="MinIO cung cấp lưu trữ đối tượng qua API tương thích với S3.">
+  <meta name="description" content="MinIO provides high-performance object storage with an S3-compatible API.">
   <meta name="theme-color" content="#08090b">
-  <title>Tổ chức vùng lưu trữ dữ liệu với MinIO | Phan Trọng Nguyên</title>
+  <title>Organizing Storage Buckets with MinIO | Phan Trong Nguyen</title>
   <link rel="icon" href="../../assets/images/letter-n.png">
   <link rel="stylesheet" href="../../assets/css/shared/colors.css">
   <link rel="stylesheet" href="../../assets/css/shared/style.css">
@@ -13,30 +13,30 @@
 </head>
 <body>
   <main class="blog-article">
-    <nav class="blog-breadcrumb" aria-label="Đường dẫn">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
       <a href="../../index.html">Portfolio</a><span aria-hidden="true">/</span>
       <a href="../blogs.html">Blog</a><span aria-hidden="true">/</span>
       <span aria-current="page">MinIO</span>
     </nav>
     <article aria-labelledby="post-title">
       <header class="blog-article-header">
-        <p class="blog-meta"><span>Hạ tầng dữ liệu</span></p>
-        <h1 id="post-title">Tổ chức vùng lưu trữ dữ liệu với MinIO</h1>
-        <p class="blog-article-intro">MinIO cung cấp lưu trữ đối tượng qua API tương thích với S3.</p>
+        <p class="blog-meta"><span>Data Infrastructure</span></p>
+        <h1 id="post-title">Organizing Storage Buckets with MinIO</h1>
+        <p class="blog-article-intro">MinIO provides high-performance object storage with an S3-compatible API.</p>
       </header>
       <div class="blog-prose">
         <section aria-labelledby="example">
-          <h2 id="example">Ví dụ trong kỹ thuật dữ liệu</h2>
-          <p>Có thể ghi tệp nguồn vào vùng raw theo nguồn và ngày, rồi ghi bảng Parquet đã làm sạch vào vùng processed. Cấu trúc đường dẫn giúp tìm đúng dữ liệu khi cần chạy lại một ngày cụ thể.</p>
+          <h2 id="example">Data Engineering Example</h2>
+          <p>Store landing files in a raw bucket partitioned by source and date, then persist cleaned Parquet tables into a processed bucket, simplifying partition-level re-processing.</p>
         </section>
         <section aria-labelledby="practice">
-          <h2 id="practice">Lưu ý khi triển khai</h2>
-          <p>Định nghĩa quy ước tên tệp và quyền truy cập cho từng vùng. Giữ tệp nguồn đủ lâu để đối chiếu khi quy tắc xử lý thay đổi.</p>
+          <h2 id="practice">Implementation Notes</h2>
+          <p>Define strict object naming conventions and bucket lifecycle policies. Retain raw landing files long enough to support reprocessing whenever business transformation logic evolves.</p>
         </section>
       </div>
       <footer class="blog-article-footer">
-        <a class="blog-read" href="../blogs.html#skill-posts">← Bài viết về kỹ năng</a>
-        <a class="blog-read" href="../skills.html">← Danh sách kỹ năng</a>
+        <a class="blog-read" href="../blogs.html#skill-posts">← Skill articles</a>
+        <a class="blog-read" href="../skills.html">← All skills</a>
       </footer>
     </article>
   </main>

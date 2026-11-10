@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="TensorFlow hỗ trợ xây dựng và huấn luyện mạng nơ-ron.">
+  <meta name="description" content="TensorFlow provides an end-to-end open-source machine learning platform for deep neural network development.">
   <meta name="theme-color" content="#08090b">
-  <title>Dự báo chuỗi thời gian với TensorFlow | Phan Trọng Nguyên</title>
+  <title>Time Series Forecasting with TensorFlow | Phan Trong Nguyen</title>
   <link rel="icon" href="../../assets/images/letter-n.png">
   <link rel="stylesheet" href="../../assets/css/shared/colors.css">
   <link rel="stylesheet" href="../../assets/css/shared/style.css">
@@ -13,30 +13,30 @@
 </head>
 <body>
   <main class="blog-article">
-    <nav class="blog-breadcrumb" aria-label="Đường dẫn">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
       <a href="../../index.html">Portfolio</a><span aria-hidden="true">/</span>
       <a href="../blogs.html">Blog</a><span aria-hidden="true">/</span>
       <span aria-current="page">TensorFlow</span>
     </nav>
     <article aria-labelledby="post-title">
       <header class="blog-article-header">
-        <p class="blog-meta"><span>Học sâu</span></p>
-        <h1 id="post-title">Dự báo chuỗi thời gian với TensorFlow</h1>
-        <p class="blog-article-intro">TensorFlow hỗ trợ xây dựng và huấn luyện mạng nơ-ron.</p>
+        <p class="blog-meta"><span>Deep Learning</span></p>
+        <h1 id="post-title">Time Series Forecasting with TensorFlow</h1>
+        <p class="blog-article-intro">TensorFlow provides an end-to-end open-source machine learning platform for deep neural network development.</p>
       </header>
       <div class="blog-prose">
         <section aria-labelledby="example">
-          <h2 id="example">Ví dụ thực hành</h2>
-          <p>Dùng số đơn hàng của những ngày trước làm đầu vào và số đơn của ngày kế tiếp làm nhãn để huấn luyện mô hình dự báo.</p>
+          <h2 id="example">Hands-on Example</h2>
+          <p>Train a recurrent neural network using preceding days' order volumes to forecast next-day transaction volumes for capacity planning.</p>
         </section>
         <section aria-labelledby="practice">
-          <h2 id="practice">Lưu ý khi triển khai</h2>
-          <p>Chia tập huấn luyện và kiểm định theo thời gian. So sánh dự báo với cách lấy số đơn của cùng ngày trong tuần trước.</p>
+          <h2 id="practice">Implementation Notes</h2>
+          <p>Split training and validation sets strictly along time boundaries without shuffling. Always compare model predictions against a naive seasonal baseline (e.g., same day last week).</p>
         </section>
       </div>
       <footer class="blog-article-footer">
-        <a class="blog-read" href="../blogs.html#skill-posts">← Bài viết về kỹ năng</a>
-        <a class="blog-read" href="../skills.html">← Danh sách kỹ năng</a>
+        <a class="blog-read" href="../blogs.html#skill-posts">← Skill articles</a>
+        <a class="blog-read" href="../skills.html">← All skills</a>
       </footer>
     </article>
   </main>
