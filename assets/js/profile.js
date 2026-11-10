@@ -23,8 +23,8 @@
         { title: "Data Processing", description: "Experience developing workflows that prepare and process data for downstream use.", symbol: "03" }
       ] },
       { id: "experience", title: "Experience", headline: "Experience", subtitle: "Work experience, internships, and building real-world data systems." },
-      { id: "blogs", title: "Blog", headline: "ls blogs", subtitle: "Technical notes on data engineering, technology, and lessons from real-world projects." },
-      { id: "projects", title: "PROJECTS", introduction: "Add projects you want to showcase.", cards: [
+      { id: "blogs", title: "Blogs", headline: "Blogs", subtitle: "Technical notes on data engineering, technology, and lessons from real-world projects." },
+      { id: "projects", title: "Projects", headline: "Projects", subtitle: "Featured data engineering projects and technical solutions.", cards: [
         { title: "Project title", description: "Describe the problem, your contribution, and the outcome." }
       ] },
       { id: "skills", title: "Skills", headline: "Skills", subtitle: "" },
@@ -67,10 +67,18 @@
     else link.removeAttribute('aria-current');
   });
   if (!section) return;
-  if (pageId === 'about') {
-    document.querySelector('.hero .term-prompt').textContent = 'nguyen:~$';
-    document.querySelector('.hero .term-cmd').textContent = 'whoami';
-  }
+  const commands = {
+    about: 'whoami',
+    experience: 'cat experience',
+    skills: 'ls skills',
+    education: 'cat education',
+    blogs: 'ls blogs',
+    projects: 'ls projects'
+  };
+  const termPrompt = document.querySelector('.hero .term-prompt');
+  const termCmd = document.querySelector('.hero .term-cmd');
+  if (termPrompt) termPrompt.textContent = 'nguyen:~$';
+  if (termCmd && commands[pageId]) termCmd.textContent = commands[pageId];
   document.title = `${section.title} | ${content.name} - ${content.title}`;
   const sections = document.getElementById('sections');
   if (!sections) return;

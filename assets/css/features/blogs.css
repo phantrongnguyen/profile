@@ -1,17 +1,9 @@
-.blog-hero {
-  margin-bottom: clamp(1.5rem, 4vw, 3rem);
-  padding: clamp(1.5rem, 4vw, 3rem) 0;
-}
-
 .blog-meta,
 .blog-cover-index,
 .blog-cover-caption {
   font: var(--fs-mono)/1.6 var(--font-mono);
   letter-spacing: var(--tracking-mono);
 }
-
-.blog-hero .hero-term { margin-bottom: 0; font: var(--fs-base)/1.4 var(--font-mono); }
-.blog-hero .hero-sub { max-width: 55ch; margin-top: var(--s-3); }
 
 .blog-section-heading { margin-bottom: var(--s-4); }
 .blog-section-heading h2 { font-size: var(--fs-lg); }

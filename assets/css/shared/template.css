@@ -38,8 +38,6 @@
 .education-details dt { color: var(--text-dim); }
 .education-details dd { margin: 0; }
 .services-grid { margin-top: 24px; }
-.skills-hero { padding: 0 0 var(--s-4); margin-bottom: var(--s-5); }
-.skills-hero .hero-term { margin-bottom: var(--s-3); }
 .skills-grid {
   display: grid;
   --skills-gap: var(--s-4);
@@ -206,20 +204,39 @@
   .sidebar { display: block; position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
 }
 
-/* About design restored from codex/profile-about-refresh. */
+/* Standardized hero and layout across all profile pages, aligned with About */
 body[data-page="about"],
 body[data-page="skills"],
 body[data-page="education"],
-body[data-page="experience"] { --font-display: var(--font-mono); --font-body: var(--font-mono); --font-sans: var(--font-mono); }
-body[data-page="about"] .content-area { padding-top: 24px; }
-body[data-page="about"] .hero { padding-top: 0; }
-#about .service-card p { white-space: pre-line; }
-body[data-page="about"] .hero-headline,
-body[data-page="skills"] .hero-headline,
-body[data-page="education"] .hero-headline,
-body[data-page="experience"] .hero-headline { font-size: clamp(1.75rem, 1.1rem + 2vw, 2.75rem); }
+body[data-page="experience"],
+body[data-page="blogs"],
+body[data-page="projects"] { --font-display: var(--font-mono); --font-body: var(--font-mono); --font-sans: var(--font-mono); }
+
+.content-area { padding-top: 24px; }
+.hero {
+  padding-top: 0;
+  padding-bottom: var(--s-7);
+  margin-bottom: var(--s-7);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+.hero-term { margin-bottom: var(--s-5); }
+.hero-headline {
+  font-family: var(--font-mono);
+  font-size: clamp(1.75rem, 1.1rem + 2vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--neon-white);
+  text-shadow: 0 0 16px rgba(255, 255, 255, 0.19);
+}
 body[data-page="about"] .hero-headline { white-space: pre-line; max-width: 18ch; }
-body[data-page="about"] .hero-sub { line-height: 1.8; }
+.hero-sub {
+  margin-top: var(--s-5);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  line-height: 1.8;
+  color: var(--text-dim);
+}
+#about .service-card p { white-space: pre-line; }
 #about .about-text { white-space: pre-line; color: var(--text-dim); font-size: 1.0625rem; line-height: 1.85; max-width: 78ch; }
 #about .section-title { font-size: clamp(1.35rem, 1rem + 1vw, 1.75rem); white-space: normal; }
 #about .section-index { color: #000000; filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 6px rgba(255, 255, 255, 0.75)); }
@@ -232,7 +249,6 @@ body[data-page="about"] .hero-sub { line-height: 1.8; }
 .about-card-symbol { display: grid; place-items: center; width: 40px; height: 40px; margin-bottom: 20px; border: 1px solid var(--neon-line); border-radius: var(--r-md); background: rgba(255,255,255,.04); font-family: var(--font-mono); font-size: var(--fs-mono); color: var(--neon-white); }
 
 /* ---- Experience timeline styling ---- */
-.experience-hero { padding: 0 0 var(--s-4); margin-bottom: var(--s-5); }
 .experience-header {
   display: flex;
   flex-wrap: wrap;
@@ -277,8 +293,5 @@ body[data-page="about"] .hero-sub { line-height: 1.8; }
 @media (max-width: 560px) {
   #about .services-grid { grid-template-columns: minmax(0, 1fr); }
   #about .service-card { padding: 22px; }
-  body[data-page="about"] .hero-headline,
-  body[data-page="skills"] .hero-headline,
-  body[data-page="education"] .hero-headline,
-  body[data-page="experience"] .hero-headline { font-size: clamp(1.5rem, 5.5vw, 2rem); }
+  .hero-headline { font-size: clamp(1.5rem, 5.5vw, 2rem); }
 }
