@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A customizable profile website template.">
+  <meta name="description" content="Professional experience of Phan Trong Nguyen as a Data Engineer Intern.">
   <meta name="theme-color" content="#08090b">
-  <title>experience | Phan Trong Nguyen - Data Engineer</title>
+  <title>EXPERIENCE | Phan Trong Nguyen - Data Engineer</title>
   <link rel="icon" type="image/png" href="../assets/images/letter-n.png">
   <link rel="stylesheet" href="../assets/css/shared/colors.css">
   <link rel="stylesheet" href="../assets/css/shared/style.css">
@@ -56,9 +56,60 @@
         <a class="tab-btn" data-page="projects" href="projects.html">PROJECTS</a>
       </div></nav>
       <div class="content-area">
-        <header class="hero"><div class="hero-term"><span class="term-prompt">$</span><span class="term-cmd">welcome</span></div><h2 class="hero-headline" id="headline"></h2><p class="hero-sub" id="subtitle"></p></header>
-        <div id="sections"></div>
-        <noscript>Please enable JavaScript to display the template content.</noscript>
+        <header class="hero experience-hero">
+          <div class="hero-term"><span class="term-prompt">nguyen:~$</span><span class="term-cmd">cat experience</span></div>
+          <h2 class="hero-headline" id="headline">Experience</h2>
+          <p class="hero-sub" id="subtitle">Quá trình làm việc, thực tập và phát triển hệ thống dữ liệu thực tế.</p>
+        </header>
+        <section class="timeline" aria-label="Work experience timeline">
+          <article class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <div class="experience-header">
+                <div>
+                  <h3 class="experience-role">Data Engineer Intern</h3>
+                  <div class="company-info">
+                    <span class="company">
+                      <a href="https://etechs.vn/" target="_blank" rel="noopener noreferrer">CÔNG TY CỔ PHẦN GIẢI PHÁP CÔNG NGHỆ GIÁO DỤC ETECHS</a>
+                    </span>
+                  </div>
+                </div>
+                <div class="period">
+                  <time datetime="2026-07-31">31/07/2026</time> – <time datetime="2026-09-15">15/09/2026</time>
+                </div>
+              </div>
+              <p class="description">
+                Tham gia nghiên cứu, thiết kế kiến trúc và phát triển hệ thống <strong>Data Ingestion Pipeline</strong> chịu tải, đảm bảo tính ổn định, cơ chế tự khôi phục và tính toàn vẹn dữ liệu:
+              </p>
+              <ul class="certification-list experience-tasks" role="list">
+                <li>
+                  <strong>Thiết kế Kiến trúc Pipeline & Failure Scenarios:</strong> Phân tích luồng dữ liệu (Data Flow), xây dựng mô hình máy trạng thái (State Machine) và hoạch định kịch bản xử lý sự cố (Failure Scenarios) cho Ingestion Pipeline, đảm bảo nguyên lý tính lũy thỏa (Idempotency), cơ chế Retry thông minh và hàng đợi thông điệp chết (Dead Letter Queue - DLQ).
+                </li>
+                <li>
+                  <strong>Triển khai Worker & Data Adapter:</strong> Phát triển các module Worker và Adapter để thu nạp dữ liệu, tích hợp chặt chẽ cơ chế kiểm tra Idempotency nhằm ngăn chặn hoàn toàn việc nhân bản hoặc xử lý trùng lặp dữ liệu.
+                </li>
+                <li>
+                  <strong>Độ tin cậy, Giám sát & Kiểm thử Hiệu năng:</strong> Bổ sung cơ chế tự phục hồi (Recovery Mechanism), thu thập các chỉ số vận hành (Metrics Monitoring) và thực hiện kiểm thử hiệu năng (Performance Test) tối ưu throughput và độ trễ.
+                </li>
+                <li>
+                  <strong>Kiểm thử E2E & Biên soạn Runbook:</strong> Thực thi kịch bản kiểm thử tải toàn trình (End-to-End Load Testing) dưới tải cơ bản, hoàn thiện quy trình kiểm soát chất lượng và biên soạn tài liệu Runbook chi tiết để hướng dẫn vận hành, giám sát và ứng cứu pipeline.
+                </li>
+              </ul>
+              <div class="portfolio-tags experience-tags">
+                <span class="portfolio-tag">Data Ingestion</span>
+                <span class="portfolio-tag">Data Pipeline</span>
+                <span class="portfolio-tag">Idempotency</span>
+                <span class="portfolio-tag">Dead Letter Queue (DLQ)</span>
+                <span class="portfolio-tag">State Machine</span>
+                <span class="portfolio-tag">Retry & Recovery</span>
+                <span class="portfolio-tag">Metrics Monitoring</span>
+                <span class="portfolio-tag">Performance Testing</span>
+                <span class="portfolio-tag">E2E Load Testing</span>
+                <span class="portfolio-tag">Runbook</span>
+              </div>
+            </div>
+          </article>
+        </section>
       </div>
       <footer class="footer">&copy; 2026 phantrongnguyen. All rights reserved.</footer>
     </main>
