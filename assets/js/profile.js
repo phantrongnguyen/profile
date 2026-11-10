@@ -27,7 +27,7 @@
       { id: "projects", title: "Projects", headline: "Projects", subtitle: "Featured data engineering projects and technical solutions.", cards: [
         { title: "Project title", description: "Describe the problem, your contribution, and the outcome." }
       ] },
-      { id: "skills", title: "Skills", headline: "Skills", subtitle: "" },
+      { id: "skills", title: "Skills", headline: "Technical Stack &\nData Tooling.", subtitle: "Technologies, frameworks, and database engines I leverage to build end-to-end data systems." },
       { id: "education", title: "Education", headline: "Education", subtitle: "" }
     ]
   };
