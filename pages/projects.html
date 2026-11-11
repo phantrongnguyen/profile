@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A customizable profile website template.">
+  <meta name="description" content="Data engineering, data warehousing, and MLOps projects by Phan Trong Nguyen.">
   <meta name="theme-color" content="#08090b">
   <title>PROJECTS | Phan Trong Nguyen - Data Engineer</title>
   <link rel="icon" type="image/png" href="../assets/images/letter-n.png">
@@ -13,8 +13,10 @@
   <link rel="stylesheet" href="../assets/css/shared/components.css">
   <link rel="stylesheet" href="../assets/css/shared/template.css">
   <link rel="stylesheet" href="../assets/css/features/rainy-lake.css">
+  <link rel="stylesheet" href="../assets/css/features/projects.css">
   <script src="../assets/js/effects/rainy-lake.js" defer></script>
   <script src="../assets/js/profile.js" defer></script>
+  <script src="../assets/js/projects.js" defer></script>
 </head>
 <body data-page="projects">
   <div class="bg" aria-hidden="true"><div class="bg-grid"></div><div class="bg-glow"></div></div>
@@ -58,11 +60,142 @@
       <div class="content-area">
         <header class="hero">
           <div class="hero-term"><span class="term-prompt">nguyen:~$</span><span class="term-cmd">ls projects</span></div>
-          <h2 class="hero-headline" id="headline">Projects</h2>
-          <p class="hero-sub" id="subtitle">Featured data engineering projects and technical solutions.</p>
+          <h2 class="hero-headline" id="headline">Engineering<br>Projects.</h2>
+          <p class="hero-sub" id="subtitle">Production data warehousing, automated ETL pipelines, OLAP cubes, and predictive machine learning.</p>
         </header>
-        <div id="sections"></div>
-        <noscript>Please enable JavaScript to display the template content.</noscript>
+
+        <section class="projects-grid" aria-label="Engineering projects">
+          <!-- Project 01: Toy Store E-Commerce Analytics Platform -->
+          <article class="project-card" id="toy-store-ecommerce-analytics">
+            <div class="project-header">
+              <span class="project-index" aria-hidden="true">01</span>
+              <div class="project-links">
+                <a class="project-btn primary" href="https://github.com/phantrongnguyen/toy-store-ecommerce-analytics-platform" target="_blank" rel="noopener noreferrer" title="GitHub Repository">
+                  <img src="../assets/images/github.png" alt="" width="14" height="14">
+                  <span>Repo</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+                <a class="project-btn" href="https://mavenanalytics.io/data-playground/toy-store-e-commerce-database" target="_blank" rel="noopener noreferrer" title="Source Dataset">
+                  <span>Data</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <h3 class="project-title">
+                <a href="https://github.com/phantrongnguyen/toy-store-ecommerce-analytics-platform" target="_blank" rel="noopener noreferrer">
+                  Toy Store E-Commerce Analytics
+                </a>
+              </h3>
+              <p class="project-role">Data Warehouse &bull; SSIS ETL &bull; SSAS OLAP &bull; FastAPI</p>
+
+              <!-- Pipeline Flow -->
+              <div class="project-flow" aria-label="Architecture flow">
+                <span>CSV</span><b>→</b><span>OLTP</span><b>→</b><span>SSIS</span><b>→</b><span>Star DW</span><b>→</b><span>MOLAP</span><b>→</b><span>FastAPI</span>
+              </div>
+
+              <!-- Key Specs / Metrics Chips -->
+              <div class="project-specs">
+                <span class="spec-chip"><strong>1.18M+</strong> Pageviews</span>
+                <span class="spec-chip"><strong>32K+</strong> Orders</span>
+                <span class="spec-chip"><strong>1 Fact / 5 Dims</strong> DW</span>
+                <span class="spec-chip"><strong>SSAS</strong> MDX Cube</span>
+              </div>
+            </div>
+
+            <div class="project-footer">
+              <ul class="project-tools" aria-label="Tools used">
+                <li><a class="tool-badge" href="blog/sql.html" data-tool="SQL" aria-label="SQL"><img src="../assets/images/sql.png" alt="SQL" width="18" height="18"></a></li>
+                <li><a class="tool-badge" href="blog/python.html" data-tool="Python" aria-label="Python"><img src="../assets/images/python.png" alt="Python" width="18" height="18"></a></li>
+                <li><a class="tool-badge" href="blog/pandas.html" data-tool="pandas" aria-label="pandas"><img src="../assets/images/pandas.png" alt="pandas" width="18" height="18"></a></li>
+                <li><a class="tool-badge" href="blog/numpy.html" data-tool="NumPy" aria-label="NumPy"><img src="../assets/images/numpy.png" alt="NumPy" width="18" height="18"></a></li>
+                <li><a class="tool-badge" href="blog/scikit-learn.html" data-tool="scikit-learn" aria-label="scikit-learn"><img src="../assets/images/scikit-learn.svg" alt="scikit-learn" width="18" height="18"></a></li>
+                <li><a class="tool-badge" href="blog/fastapi.html" data-tool="FastAPI" aria-label="FastAPI"><img src="../assets/images/fast-api.png" alt="FastAPI" width="18" height="18"></a></li>
+                <li><a class="tool-badge" href="blog/streamlit.html" data-tool="Streamlit" aria-label="Streamlit"><img src="../assets/images/streamlit.png" alt="Streamlit" width="18" height="18"></a></li>
+                <li><a class="tool-badge" href="blog/jupyter.html" data-tool="Jupyter" aria-label="Jupyter"><img src="../assets/images/jupyter.png" alt="Jupyter" width="18" height="18"></a></li>
+              </ul>
+              <div class="project-previews" aria-label="Architecture diagrams">
+                <a class="preview-chip" href="../assets/images/project-toy-store-pipeline.png" data-caption="End-to-End Pipeline Architecture: Raw CSVs → SQL Server OLTP → SSIS ETL → Star Schema DW → SSAS OLAP & FastAPI.">
+                  <span>Pipeline</span>
+                </a>
+                <a class="preview-chip" href="../assets/images/project-toy-store-star.png" data-caption="Star Schema Data Warehouse: 1 central Fact table joined with 5 Dimension tables.">
+                  <span>Star DW</span>
+                </a>
+                <a class="preview-chip" href="../assets/images/project-toy-store-schema.png" data-caption="Normalized 3NF OLTP Schema: 6 operational tables in SQL Server 2022.">
+                  <span>OLTP</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 02: California Housing ML & MLOps Platform -->
+          <article class="project-card" id="california-housing-ml-platform">
+            <div class="project-header">
+              <span class="project-index" aria-hidden="true">02</span>
+              <div class="project-links">
+                <a class="project-btn primary" href="https://github.com/phantrongnguyen/end-to-end-california-housing-ml-project" target="_blank" rel="noopener noreferrer" title="GitHub Repository">
+                  <img src="../assets/images/github.png" alt="" width="14" height="14">
+                  <span>Repo</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+                <a class="project-btn" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_california_housing.html" target="_blank" rel="noopener noreferrer" title="Source Dataset">
+                  <span>Data</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <h3 class="project-title">
+                <a href="https://github.com/phantrongnguyen/end-to-end-california-housing-ml-project" target="_blank" rel="noopener noreferrer">
+                  California Housing ML &amp; MLOps
+                </a>
+              </h3>
+              <p class="project-role">Feature Pipeline &bull; XGBoost &bull; MLflow &bull; Docker</p>
+
+              <!-- Pipeline Flow -->
+              <div class="project-flow" aria-label="Architecture flow">
+                <span>Census</span><b>→</b><span>Features</span><b>→</b><span>XGBoost</span><b>→</b><span>MLflow</span><b>→</b><span>Flask</span><b>→</b><span>Docker</span>
+              </div>
+
+              <!-- Key Specs / Metrics Chips -->
+              <div class="project-specs">
+                <span class="spec-chip"><strong>20,640</strong> Records</span>
+                <span class="spec-chip"><strong>0.8575 R&sup2;</strong> XGBoost</span>
+                <span class="spec-chip"><strong>0.4359</strong> RMSE</span>
+                <span class="spec-chip"><strong>MLflow</strong> Tracking</span>
+              </div>
+            </div>
+
+            <div class="project-footer">
+              <ul class="project-tools" aria-label="Tools used">
+                <li><a class="tool-badge" href="blog/python.html" data-tool="Python" aria-label="Python"><img src="../assets/images/python.png" alt="Python" width="18" height="18"></a></li>
+                <li><a class="tool-badge" href="blog/scikit-learn.html" data-tool="scikit-learn" aria-label="scikit-learn"><img src="../assets/images/scikit-learn.svg" alt="scikit-learn" width="18" height="18"></a></li>
+                <li><a class="tool-badge" href="blog/pandas.html" data-tool="pandas" aria-label="pandas"><img src="../assets/images/pandas.png" alt="pandas" width="18" height="18"></a></li>
+                <li><a class="tool-badge" href="blog/numpy.html" data-tool="NumPy" aria-label="NumPy"><img src="../assets/images/numpy.png" alt="NumPy" width="18" height="18"></a></li>
+                <li><a class="tool-badge" href="blog/matplotlib.html" data-tool="Matplotlib" aria-label="Matplotlib"><img src="../assets/images/matplotlib.png" alt="Matplotlib" width="18" height="18"></a></li>
+                <li><a class="tool-badge" href="blog/seaborn.html" data-tool="Seaborn" aria-label="Seaborn"><img src="../assets/images/seaborn.png" alt="Seaborn" width="18" height="18"></a></li>
+                <li><a class="tool-badge" href="blog/jupyter.html" data-tool="Jupyter" aria-label="Jupyter"><img src="../assets/images/jupyter.png" alt="Jupyter" width="18" height="18"></a></li>
+                <li><a class="tool-badge" href="blog/docker.html" data-tool="Docker" aria-label="Docker"><img src="../assets/images/docker.png" alt="Docker" width="18" height="18"></a></li>
+                <li><a class="tool-badge" href="blog/html.html" data-tool="HTML" aria-label="HTML"><img src="../assets/images/html.png" alt="HTML" width="18" height="18"></a></li>
+                <li><a class="tool-badge" href="blog/css.html" data-tool="CSS" aria-label="CSS"><img src="../assets/images/css-3.png" alt="CSS" width="18" height="18"></a></li>
+                <li><a class="tool-badge" href="blog/javascript.html" data-tool="JavaScript" aria-label="JavaScript"><img src="../assets/images/js.png" alt="JavaScript" width="18" height="18"></a></li>
+              </ul>
+              <div class="project-previews" aria-label="System screenshots">
+                <a class="preview-chip dark-frame" href="../assets/images/project-california-housing-dashboard.png" data-caption="Executive ML Dashboard: Model R² comparison across Best XGBoost (0.8575), Random Forest (0.8061), and Linear Regression (0.5958).">
+                  <span>Dashboard</span>
+                </a>
+                <a class="preview-chip dark-frame" href="../assets/images/project-california-housing-mlflow.png" data-caption="MLflow Experiment Tracking: Hyperparameter tuning impact and model registry lifecycle stages.">
+                  <span>MLflow</span>
+                </a>
+                <a class="preview-chip dark-frame" href="../assets/images/project-california-housing-analytics.png" data-caption="Feature Analytics: Distribution profiling across 20,640 California block groups and 8 predictors.">
+                  <span>Analytics</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        </section>
       </div>
       <footer class="footer">&copy; 2026 phantrongnguyen. All rights reserved.</footer>
     </main>

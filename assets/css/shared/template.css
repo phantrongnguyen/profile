@@ -229,7 +229,8 @@ body[data-page="projects"] { --font-display: var(--font-mono); --font-body: var(
   text-shadow: 0 0 16px rgba(255, 255, 255, 0.19);
 }
 body[data-page="about"] .hero-headline,
-body[data-page="skills"] .hero-headline { white-space: pre-line; max-width: 20ch; }
+body[data-page="skills"] .hero-headline,
+body[data-page="projects"] .hero-headline { white-space: pre-line; max-width: 20ch; }
 .hero-sub {
   margin-top: var(--s-5);
   font-family: var(--font-mono);

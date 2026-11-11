@@ -24,9 +24,7 @@
       ] },
       { id: "experience", title: "Experience", headline: "Experience", subtitle: "Work experience, internships, and building real-world data systems." },
       { id: "blogs", title: "Blogs", headline: "Blogs", subtitle: "Technical notes on data engineering, technology, and lessons from real-world projects." },
-      { id: "projects", title: "Projects", headline: "Projects", subtitle: "Featured data engineering projects and technical solutions.", cards: [
-        { title: "Project title", description: "Describe the problem, your contribution, and the outcome." }
-      ] },
+      { id: "projects", title: "Projects", headline: "Engineering\nProjects.", subtitle: "Production data warehousing, automated ETL pipelines, OLAP cubes, and predictive machine learning." },
       { id: "skills", title: "Skills", headline: "Technical Stack &\nData Tooling.", subtitle: "Technologies, frameworks, and database engines I leverage to build end-to-end data systems." },
       { id: "education", title: "Education", headline: "Education", subtitle: "" }
     ]

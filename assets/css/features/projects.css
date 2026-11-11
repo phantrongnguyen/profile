@@ -1,0 +1,387 @@
+/* ============================================================
+   Projects — Compact Horizontal Multi-Repo Grid
+   Matches About & Skills grid density for scalable repositories
+   ============================================================ */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  gap: var(--s-4);
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--neon-line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--neon-glow);
+  transition: border-color var(--t-fast), box-shadow var(--t-fast), transform var(--t-fast);
+}
+
+.project-card:hover {
+  border-color: rgba(255, 255, 255, 0.65);
+  box-shadow: var(--neon-glow-hover);
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .project-card:hover {
+    transform: translateY(-3px);
+  }
+}
+
+/* ---- Top Row: Index Badge + Action Links ------------------ */
+.project-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-2);
+}
+
+.project-index {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border: 1px solid var(--neon-line);
+  border-radius: var(--r-sm);
+  background: rgba(255, 255, 255, 0.04);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  font-weight: 700;
+  color: var(--neon-white);
+}
+
+.project-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.project-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 9px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: var(--tracking-mono);
+  color: var(--text-dim);
+  background: var(--ground-2);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  text-decoration: none;
+  transition: color var(--t-fast), border-color var(--t-fast), background var(--t-fast);
+}
+
+.project-btn img {
+  width: 13px;
+  height: 13px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.25));
+}
+
+.project-btn:hover {
+  color: var(--neon-white);
+  border-color: var(--neon-line);
+  background: var(--surface-2);
+}
+
+.project-btn.primary {
+  color: var(--neon-white);
+  border-color: var(--neon-line);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ---- Body: Title, Role, Flow & Key Specs ------------------ */
+.project-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.project-title {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--neon-white);
+}
+
+.project-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.project-title a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.project-role {
+  margin: -4px 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: var(--tracking-mono);
+  color: var(--text-faint);
+}
+
+/* Compact Pipeline Flow */
+.project-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 8px;
+  background: var(--ground-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+}
+
+.project-flow span {
+  padding: 1px 6px;
+  border: 1px solid var(--line-strong);
+  border-radius: 3px;
+  background: var(--surface);
+  color: var(--neon-white);
+  font-weight: 600;
+}
+
+.project-flow b {
+  color: var(--text-faint);
+  font-weight: 400;
+}
+
+/* Compact Metric Chips */
+.project-specs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.spec-chip {
+  padding: 5px 8px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  background: var(--ground-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.spec-chip strong {
+  color: var(--neon-white);
+  font-weight: 600;
+}
+
+/* ---- Footer: Tool Icons & Diagram Preview Chips ----------- */
+.project-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+.project-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tool-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: var(--ground-2);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  transition: border-color var(--t-fast), background var(--t-fast), transform var(--t-fast), box-shadow var(--t-fast);
+}
+
+.tool-badge img {
+  width: 17px;
+  height: 17px;
+  object-fit: contain;
+  transition: transform var(--t-fast), filter var(--t-fast);
+}
+
+.tool-badge:is(:hover, :focus-visible) {
+  border-color: var(--neon-line);
+  background: var(--surface-2);
+  box-shadow: var(--neon-glow);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .tool-badge:is(:hover, :focus-visible) {
+    transform: translateY(-2px);
+  }
+  .tool-badge:is(:hover, :focus-visible) img {
+    transform: scale(1.12);
+    filter:
+      drop-shadow(0 0 3px rgba(255, 255, 255, 0.65))
+      drop-shadow(0 0 8px rgba(255, 255, 255, 0.45));
+  }
+}
+
+.tool-badge::after {
+  content: attr(data-tool);
+  position: absolute;
+  bottom: calc(100% + 5px);
+  left: 50%;
+  transform: translateX(-50%) translateY(3px);
+  padding: 2px 6px;
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  border: 1px solid var(--neon-line);
+  color: var(--neon-white);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: var(--tracking-mono);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--t-fast), transform var(--t-fast), visibility var(--t-fast);
+  z-index: 10;
+}
+
+.tool-badge:is(:hover, :focus-visible)::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.project-previews {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.preview-chip {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 4px 7px;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: var(--tracking-mono);
+  color: var(--text-dim);
+  background: var(--ground-2);
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--r-sm);
+  text-decoration: none;
+  cursor: zoom-in;
+  white-space: nowrap;
+  transition: color var(--t-fast), border-color var(--t-fast), background var(--t-fast);
+}
+
+.preview-chip::before {
+  content: "⊞";
+  color: var(--accent);
+}
+
+.preview-chip:hover {
+  color: var(--neon-white);
+  border-style: solid;
+  border-color: var(--neon-line);
+  background: var(--surface-2);
+}
+
+/* ---- Lightbox Dialog for Diagrams ------------------------- */
+.diagram-lightbox {
+  max-width: min(94vw, 1280px);
+  max-height: 90vh;
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--neon-line);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.85), var(--neon-glow);
+}
+
+.diagram-lightbox::backdrop {
+  background: rgba(5, 6, 8, 0.86);
+  backdrop-filter: blur(6px);
+}
+
+.diagram-lightbox-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding: 10px 16px;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--line-strong);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+}
+
+.diagram-lightbox-title {
+  color: var(--neon-white);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.diagram-lightbox-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  flex-shrink: 0;
+}
+
+.diagram-lightbox-close {
+  padding: 4px 10px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  color: var(--text-dim);
+  background: var(--ground-2);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  cursor: pointer;
+}
+
+.diagram-lightbox-close:hover {
+  color: var(--neon-white);
+  border-color: var(--neon-line);
+}
+
+.diagram-lightbox-body {
+  padding: clamp(12px, 2vw, 20px);
+  background: #ffffff;
+  overflow: auto;
+  max-height: calc(90vh - 52px);
+  text-align: center;
+}
+
+.diagram-lightbox-body.dark-frame {
+  background: var(--ground);
+}
+
+.diagram-lightbox-body img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+}
